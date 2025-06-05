@@ -63,7 +63,7 @@ const Footer = () => {
 
       {/* Bottom Footer */}
       <div className="border-t text-center py-4 text-sm text-gray-500">
-        © {new Date().getFullYear()} EventMatea — Empowering Local Impact
+        © {new Date().getFullYear()} ImpactHub — Empowering Local Impact
       </div>
     </footer>
   );
