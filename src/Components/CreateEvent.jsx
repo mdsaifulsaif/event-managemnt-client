@@ -51,7 +51,6 @@ const CreateEvent = () => {
       .catch((error) => {
         console.log("Error submitting event:", error);
       });
-    console.log(eventData);
   };
 
   return (

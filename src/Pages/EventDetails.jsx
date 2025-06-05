@@ -1,10 +1,72 @@
 import React from "react";
 import { useLoaderData } from "react-router";
+import { FaMapMarkerAlt, FaCalendarAlt, FaUser, FaTag } from "react-icons/fa";
+import axios from "axios";
 
 function EventDetails() {
   const event = useLoaderData();
-  console.log(event);
-  return <div>EventDetails</div>;
+  const currentUser = "user@gmail.com";
+
+  const handleJoindEvent = (event) => {
+    const joinedData = {
+      eventId: event._id,
+      eventTitle: event.title,
+      description: event.description,
+      location: event.location,
+      imageUrl: event.imageUrl,
+      eventType: event.eventType,
+      createdBy: event.createdBy,
+      userEmail: currentUser,
+      joinedAt: new Date(),
+    };
+
+    axios
+      .post("http://localhost:3000/join-event", joinedData)
+      .then((res) => {
+        if (res.data.insertedId) {
+        }
+      })
+      .catch((error) => {
+        console.log("Error submitting event:", error);
+      });
+    // console.log(joinedData);
+  };
+
+  return (
+    <div className="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-lg mt-10">
+      <img
+        src={event.imageUrl}
+        alt={event.title}
+        className="w-full h-64 object-cover rounded-lg mb-6"
+      />
+      <h2 className="text-3xl font-bold mb-2 text-[#129990]">{event.title}</h2>
+      <p className="text-gray-600 mb-4">{event.description}</p>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-700">
+        <p className="flex items-center gap-2">
+          <FaMapMarkerAlt className="text-[#129990]" />
+          <strong>Location:</strong> {event.location}
+        </p>
+        <p className="flex items-center gap-2">
+          <FaCalendarAlt className="text-[#129990]" />
+          <strong>Date:</strong> {new Date(event.date).toLocaleDateString()}
+        </p>
+        <p className="flex items-center gap-2">
+          <FaTag className="text-[#129990]" />
+          <strong>Type:</strong> {event.eventType}
+        </p>
+        <p className="flex items-center gap-2">
+          <FaUser className="text-[#129990]" />
+          <strong>Created By:</strong> {event.createdBy}
+        </p>
+      </div>
+      <button
+        onClick={() => handleJoindEvent(event)}
+        className="w-full py-1 cursor-pointer hover:text-gray-200 transition-all  bg-[#129990] font-semibold text-lg text-white mt-10  rounded-sm "
+      >
+        Join Event
+      </button>
+    </div>
+  );
 }
 
 export default EventDetails;

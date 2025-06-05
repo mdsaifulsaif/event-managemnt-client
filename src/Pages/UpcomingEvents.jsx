@@ -1,10 +1,11 @@
-import React, { use } from "react";
+import React from "react";
 import { useLoaderData } from "react-router";
 import { Link } from "react-router";
+import { FaMapMarkerAlt, FaCalendarAlt } from "react-icons/fa";
 
 function UpcomingEvents() {
   const events = useLoaderData();
-  console.log(events);
+
   return (
     <section className="px-6 py-10 max-w-7xl mx-auto">
       <h2 className="text-3xl font-bold text-center text-[#129990] mb-8">
@@ -23,13 +24,20 @@ function UpcomingEvents() {
               className="w-full h-48 object-cover rounded"
             />
             <h3 className="text-xl font-semibold mt-3">{event.title}</h3>
-            <p className="text-gray-600">📍 {event.location}</p>
-            <p className="text-gray-600">
-              📅 {new Date(event.date).toLocaleDateString()}
+
+            <p className="text-gray-600 flex items-center gap-2">
+              <FaMapMarkerAlt className="text-[#129990]" /> {event.location}
             </p>
+
+            <p className="text-gray-600 flex items-center gap-2">
+              <FaCalendarAlt className="text-[#129990]" />{" "}
+              {new Date(event.date).toLocaleDateString()}
+            </p>
+
             <p className="text-gray-500 text-sm mt-1">
               Type: {event.eventType}
             </p>
+
             <Link to={`/event-details/${event._id}`}>
               <button className="mt-3 w-full bg-[#129990] text-white py-2 rounded hover:bg-[#0f877f]">
                 View Event
