@@ -2,6 +2,7 @@ import React from "react";
 import { useLoaderData } from "react-router";
 import { FaMapMarkerAlt, FaCalendarAlt, FaUser, FaTag } from "react-icons/fa";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 function EventDetails() {
   const event = useLoaderData();
@@ -24,10 +25,24 @@ function EventDetails() {
       .post("http://localhost:3000/join-event", joinedData)
       .then((res) => {
         if (res.data.insertedId) {
+          Swal.fire({
+            title: "Joined Successfully!",
+            icon: "success",
+            iconColor: "#129990",
+            confirmButtonColor: "#129990",
+            draggable: true,
+          });
         }
       })
       .catch((error) => {
-        console.log("Error submitting event:", error);
+        if (error.status === 400) {
+          Swal.fire({
+            icon: "error",
+            title: "You have alrady added this event",
+            text: "Something went wrong!",
+            confirmButtonColor: "#129990",
+          });
+        }
       });
     // console.log(joinedData);
   };
