@@ -8,6 +8,7 @@ import EventDetails from "./Pages/EventDetails";
 import JoindedEvents from "./Pages/JoindedEvents";
 import ManageEvents from "./Pages/ManageEvents";
 import UpdateEvent from "./Pages/UpdateEvent";
+import Register from "./Pages/Register";
 
 export const router = createBrowserRouter([
   {
@@ -51,11 +52,10 @@ export const router = createBrowserRouter([
           fetch(`http://localhost:3000/event/${params.id}`),
         Component: UpdateEvent,
       },
-      // {
-      //   path: "/delete-event/:id",
-      //   loader: ({ params }) =>
-      //     fetch(`http://localhost:3000/event/${params.id}`),
-      // },
+      {
+        path: "/register",
+        Component: Register,
+      },
     ],
   },
   {

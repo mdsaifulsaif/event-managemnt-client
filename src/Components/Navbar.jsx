@@ -1,11 +1,15 @@
-import { useState } from "react";
+import { use, useContext, useState } from "react";
 import { Link } from "react-router";
 import { FaSignOutAlt, FaCalendarAlt, FaBars } from "react-icons/fa";
+import { AuthContext } from "../AuthContext/AuthContextProvider";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [showName, setShowName] = useState(false);
+
+  const userInfo = useContext(AuthContext);
+  console.log(userInfo);
 
   // const userEmail = "john.doe@example.com";
   const userEmail = "john.doe@example.com";
