@@ -1,16 +1,15 @@
 import React, { useContext, useRef, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link, Navigate, useLocation, useNavigate } from "react-router";
-import { AuthContext } from "../authProvider/authProvider";
 
 import Swal from "sweetalert2";
+import { AuthContext } from "../AuthContext/AuthContextProvider";
 
 function Login() {
-  const { user } = useContext(AuthContext);
   const navigate = useNavigate();
-  const location = useLocation();
+  // const location = useLocation();
 
-  const { loginUser, googleLogin, setUser } = useContext(AuthContext);
+  const { LoginUser, googleLogin, setUser } = useContext(AuthContext);
   const [errormassage, setErrorMessage] = useState();
 
   const handleLogin = (e) => {
@@ -18,15 +17,15 @@ function Login() {
     const email = e.target.email.value;
     const password = e.target.password.value;
 
-    loginUser(email, password)
+    LoginUser(email, password)
       .then((res) => {
         const loggetuser = res.user;
 
-        if (location.state === null) {
-          navigate("/");
-        } else {
-          navigate(location.state);
-        }
+        // if (location.state === null) {
+        //   // navigate("/");
+        // } else {
+        //   navigate(location.state);
+        // }
       })
       .catch((error) => {
         const errom = error.message;
@@ -46,12 +45,13 @@ function Login() {
     googleLogin()
       .then((res) => {
         const user = res.user;
+        navigate("/");
 
-        if (location.state === null) {
-          navigate("/");
-        } else {
-          navigate(location.state);
-        }
+        // if (location.state === null) {
+        //   navigate("/");
+        // } else {
+        //   navigate(location.state);
+        // }
       })
       .catch((error) => {
         const errom = error.message;
@@ -88,7 +88,7 @@ function Login() {
               <a className="link link-hover">Forgot password?</a>
             </div>
 
-            <button type="submit" className="btn bg-green-600 text-white mt-4">
+            <button type="submit" className="btn bg-[#129990] text-white mt-4">
               Login
             </button>
 

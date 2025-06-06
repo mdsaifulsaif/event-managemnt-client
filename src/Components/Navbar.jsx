@@ -2,17 +2,33 @@ import { use, useContext, useState } from "react";
 import { Link } from "react-router";
 import { FaSignOutAlt, FaCalendarAlt, FaBars } from "react-icons/fa";
 import { AuthContext } from "../AuthContext/AuthContextProvider";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [showName, setShowName] = useState(false);
 
-  const userInfo = useContext(AuthContext);
-  console.log(userInfo);
+  const { user, signOutUser } = useContext(AuthContext);
 
   // const userEmail = "john.doe@example.com";
   const userEmail = "john.doe@example.com";
+
+  const handleLogout = () => {
+    signOutUser()
+      .then(() => {
+        Swal.fire({
+          title: "LogOut successfully!",
+          icon: "success",
+          iconColor: "#129990",
+          confirmButtonColor: "#129990",
+          draggable: true,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <nav className="bg-white     shadow-md px-5 md:px-20 py-4 flex justify-between items-center">
@@ -27,6 +43,7 @@ const Navbar = () => {
 
       {/* Desktop Menu */}
       <div className="hidden md:flex items-center gap-6">
+        <button onClick={handleLogout}>logout</button>
         <Link
           to="/upcoming-events"
           className="text-gray-700 hover:text-[#129990] font-medium"
@@ -34,55 +51,67 @@ const Navbar = () => {
           Upcoming Events
         </Link>
 
+        {user ? (
+          <div
+            className="relative"
+            onMouseEnter={() => setShowName(true)}
+            onMouseLeave={() => setShowName(false)}
+          >
+            {/* Profile Image */}
+            <img
+              src={user?.photoURL}
+              alt="Profile"
+              onClick={() => setDropdownOpen(!dropdownOpen)}
+              className="w-10 h-10 rounded-full cursor-pointer border-2 border-[#129990]"
+            />
+
+            {/* Hover Username */}
+            {showName && (
+              <div className="absolute  -top-6 left-1/2 transform -translate-x-1/2 text-sm bg-white border rounded px-2 py-1 shadow">
+                <h1 className="text-[#129990]">{user.displayName}</h1>
+              </div>
+            )}
+
+            {/* Dropdown Menu */}
+            {dropdownOpen && (
+              <div className="absolute right-0 mt-2 w-48 bg-white border rounded shadow-lg z-50">
+                <Link
+                  to="/create-event"
+                  className="block px-4 py-2 text-sm hover:bg-gray-100"
+                >
+                  Create Event
+                </Link>
+                <Link
+                  to={`/manage-events/${userEmail}`}
+                  className="block px-4 py-2 text-sm hover:bg-gray-100"
+                >
+                  Manage Events
+                </Link>
+                <Link
+                  to="/joined-events"
+                  className="block px-4 py-2 text-sm hover:bg-gray-100"
+                >
+                  Joined Events
+                </Link>
+                <button
+                  onClick={handleLogout}
+                  className="w-full text-left px-4 py-2 text-sm text-red-500 hover:bg-gray-100"
+                >
+                  <FaSignOutAlt className="inline mr-2" />
+                  Logout
+                </button>
+              </div>
+            )}
+          </div>
+        ) : (
+          <Link to="/login">
+            <button className="bg-[#129990] py-1 text-lg font-semibold text-white  px-2 rounded-sm">
+              Login
+            </button>
+          </Link>
+        )}
+
         {/* Profile Dropdown */}
-        <div
-          className="relative"
-          onMouseEnter={() => setShowName(true)}
-          onMouseLeave={() => setShowName(false)}
-        >
-          {/* Profile Image */}
-          <img
-            src="https://via.placeholder.com/40"
-            alt="Profile"
-            onClick={() => setDropdownOpen(!dropdownOpen)}
-            className="w-10 h-10 rounded-full cursor-pointer border-2 border-[#129990]"
-          />
-
-          {/* Hover Username */}
-          {showName && (
-            <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 text-sm bg-white border rounded px-2 py-1 shadow">
-              John Doe
-            </div>
-          )}
-
-          {/* Dropdown Menu */}
-          {dropdownOpen && (
-            <div className="absolute right-0 mt-2 w-48 bg-white border rounded shadow-lg z-50">
-              <Link
-                to="/create-event"
-                className="block px-4 py-2 text-sm hover:bg-gray-100"
-              >
-                Create Event
-              </Link>
-              <Link
-                to={`/manage-events/${userEmail}`}
-                className="block px-4 py-2 text-sm hover:bg-gray-100"
-              >
-                Manage Events
-              </Link>
-              <Link
-                to="/joined-events"
-                className="block px-4 py-2 text-sm hover:bg-gray-100"
-              >
-                Joined Events
-              </Link>
-              <button className="w-full text-left px-4 py-2 text-sm text-red-500 hover:bg-gray-100">
-                <FaSignOutAlt className="inline mr-2" />
-                Logout
-              </button>
-            </div>
-          )}
-        </div>
       </div>
 
       {/* Mobile Menu Button */}
@@ -119,7 +148,10 @@ const Navbar = () => {
           >
             Joined Events
           </Link>
-          <button className="w-full text-left px-6 py-3 text-red-500 hover:bg-gray-100">
+          <button
+            onClick={handleLogout}
+            className="w-full text-left px-6 py-3 text-red-500 hover:bg-gray-100"
+          >
             <FaSignOutAlt className="inline mr-2" />
             Logout
           </button>

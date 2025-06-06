@@ -1,9 +1,12 @@
 import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
   signInWithPopup,
+  signOut,
 } from "firebase/auth";
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 export const AuthContext = createContext();
 
@@ -13,24 +16,48 @@ import { auth } from "../Firebase";
 function AuthContextProvider({ children }) {
   const provider = new GoogleAuthProvider();
   const [user, setUser] = useState();
+  const [lodding, setLodding] = useState(true);
   // create user
   const crateUser = (email, password) => {
-    // setLodding(true);
+    setLodding(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
   // google login
   const googleLogin = () => {
+    setLodding(true);
     return signInWithPopup(auth, provider);
   };
 
-  //   current user
+  // Login user
+  const LoginUser = (email, password) => {
+    setLodding(true);
+    return signInWithEmailAndPassword(auth, email, password);
+  };
+
+  const signOutUser = () => {
+    return signOut(auth);
+  };
+
+  //current user
+  useEffect(() => {
+    const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      setLodding(false);
+    });
+
+    return () => {
+      unSubscribe();
+    };
+  }, []);
 
   const userInfo = {
     user,
     setUser,
     crateUser,
     googleLogin,
+    LoginUser,
+    signOutUser,
   };
 
   return (

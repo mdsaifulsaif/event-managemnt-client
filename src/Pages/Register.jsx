@@ -8,7 +8,7 @@ import { updateProfile } from "firebase/auth";
 import { AuthContext } from "../AuthContext/AuthContextProvider";
 
 function Register() {
-  const { crateUser, googleLogin } = useContext(AuthContext);
+  const { crateUser, googleLogin, setUser } = useContext(AuthContext);
   const [errorMassage, setErrorMassage] = useState();
 
   // const navigate = useNavigate();
@@ -31,12 +31,12 @@ function Register() {
       .then((res) => {
         const user = res.user;
         //  Update Firebase user profile with name and photo
-        // const userupdate = updateProfile(user, {
-        //   displayName: name,
-        //   photoURL: photourl,
-        // });
+        const userupdate = updateProfile(user, {
+          displayName: name,
+          photoURL: photourl,
+        });
 
-        // setUser({ ...user, displayName: name, photoURL: photourl });
+        setUser({ ...user, displayName: name, photoURL: photourl });
         Swal.fire({
           title: "User Create successfully!",
           icon: "success",
@@ -118,7 +118,7 @@ function Register() {
 
               <button
                 type="submit"
-                className="btn text-white bg-green-600 mt-4"
+                className="btn text-white bg-[#129990] mt-4"
               >
                 Register
               </button>

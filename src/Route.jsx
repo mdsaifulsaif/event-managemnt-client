@@ -9,6 +9,7 @@ import JoindedEvents from "./Pages/JoindedEvents";
 import ManageEvents from "./Pages/ManageEvents";
 import UpdateEvent from "./Pages/UpdateEvent";
 import Register from "./Pages/Register";
+import Login from "./Pages/Login";
 
 export const router = createBrowserRouter([
   {
@@ -55,6 +56,10 @@ export const router = createBrowserRouter([
       {
         path: "/register",
         Component: Register,
+      },
+      {
+        path: "/login",
+        Component: Login,
       },
     ],
   },
