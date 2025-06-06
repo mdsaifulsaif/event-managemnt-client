@@ -51,6 +51,11 @@ export const router = createBrowserRouter([
           fetch(`http://localhost:3000/event/${params.id}`),
         Component: UpdateEvent,
       },
+      // {
+      //   path: "/delete-event/:id",
+      //   loader: ({ params }) =>
+      //     fetch(`http://localhost:3000/event/${params.id}`),
+      // },
     ],
   },
   {

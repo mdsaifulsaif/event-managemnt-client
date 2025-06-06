@@ -1,10 +1,12 @@
+import { Link } from "react-router";
+
 const Footer = () => {
   return (
     <footer className="bg-gray-100 text-gray-700 mt-10">
       <div className=" w-11/12 mx-auto px-5 py-10 grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* About Section */}
         <div>
-          <h2 className="text-xl font-semibold" style={{ color: "#129990" }}>
+          <h2 className="text-xl font-bold " style={{ color: "#129990" }}>
             ImpactHub
           </h2>
           <p className="text-sm mt-2">
@@ -28,11 +30,7 @@ const Footer = () => {
                 Create Event
               </a>
             </li>
-            <li>
-              <a href="/manage-events" className="hover:text-[#129990]">
-                Manage Events
-              </a>
-            </li>
+
             <li>
               <a href="/joined-events" className="hover:text-[#129990]">
                 My Events

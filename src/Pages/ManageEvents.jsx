@@ -2,18 +2,44 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { FaEdit, FaTrash } from "react-icons/fa"; // React Icons
 import { Link, useLoaderData } from "react-router";
+import Swal from "sweetalert2";
 
 const ManageEvents = () => {
-  const events = useLoaderData();
+  const data = useLoaderData();
+
+  const [events, setEvents] = useState(data);
 
   const handleUpdate = () => {
     // console.log("Update clicked:", event._id);
     // Add update logic
   };
 
-  const handleDelete = () => {
-    console.log("Delete clicked:", event._id);
-    // Add delete logic
+  const handledelete = async (id) => {
+    console.log(id);
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      iconColor: "#129990",
+      confirmButtonColor: "#129990",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:3000/delete/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount > 0) {
+              const deletedPlant = events.filter((p) => p._id !== id);
+              setEvents(deletedPlant);
+              Swal.fire("Deleted!", "Your file has been deleted.", "success");
+            }
+          });
+      }
+    });
   };
 
   return (
@@ -64,8 +90,9 @@ const ManageEvents = () => {
                   Update
                 </button>
               </Link>
+
               <button
-                onClick={handleDelete}
+                onClick={() => handledelete(event._id)}
                 className="flex items-center gap-2 px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg transition"
               >
                 <FaTrash />

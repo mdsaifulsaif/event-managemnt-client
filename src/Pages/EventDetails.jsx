@@ -18,6 +18,7 @@ function EventDetails() {
       eventType: event.eventType,
       createdBy: event.createdBy,
       userEmail: currentUser,
+      date: event.data,
       joinedAt: new Date(),
     };
 

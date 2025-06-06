@@ -11,7 +11,7 @@ const Navbar = () => {
   const userEmail = "john.doe@example.com";
 
   return (
-    <nav className="bg-white   shadow-md px-20 py-4 flex justify-between items-center">
+    <nav className="bg-white     shadow-md px-5 md:px-20 py-4 flex justify-between items-center">
       {/* Logo */}
       <Link
         to="/"
