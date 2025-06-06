@@ -10,6 +10,7 @@ import ManageEvents from "./Pages/ManageEvents";
 import UpdateEvent from "./Pages/UpdateEvent";
 import Register from "./Pages/Register";
 import Login from "./Pages/Login";
+import PrivetRoute from "./PrivetRoute/PrivetRoute";
 
 export const router = createBrowserRouter([
   {
@@ -39,7 +40,13 @@ export const router = createBrowserRouter([
       {
         path: "joined-events",
         loader: () => fetch("http://localhost:3000/joinded-Events"),
-        Component: JoindedEvents,
+        element: (
+          <PrivetRoute>
+            <JoindedEvents></JoindedEvents>
+          </PrivetRoute>
+        ),
+
+        // Component: JoindedEvents,
       },
       {
         path: "/manage-events/:userEmail",

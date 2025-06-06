@@ -7,7 +7,7 @@ import { AuthContext } from "../AuthContext/AuthContextProvider";
 
 function Login() {
   const navigate = useNavigate();
-  // const location = useLocation();
+  const location = useLocation();
 
   const { LoginUser, googleLogin, setUser } = useContext(AuthContext);
   const [errormassage, setErrorMessage] = useState();
@@ -21,11 +21,11 @@ function Login() {
       .then((res) => {
         const loggetuser = res.user;
 
-        // if (location.state === null) {
-        //   // navigate("/");
-        // } else {
-        //   navigate(location.state);
-        // }
+        if (location.state === null) {
+          navigate("/");
+        } else {
+          navigate(location.state);
+        }
       })
       .catch((error) => {
         const errom = error.message;
@@ -45,13 +45,12 @@ function Login() {
     googleLogin()
       .then((res) => {
         const user = res.user;
-        navigate("/");
 
-        // if (location.state === null) {
-        //   navigate("/");
-        // } else {
-        //   navigate(location.state);
-        // }
+        if (location.state === null) {
+          navigate("/");
+        } else {
+          navigate(location.state);
+        }
       })
       .catch((error) => {
         const errom = error.message;
