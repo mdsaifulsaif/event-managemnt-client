@@ -14,7 +14,7 @@ function Home() {
       </Helmet>
       <Banner></Banner>
       <Features></Features>
-      {/* <EventGallery></EventGallery> */}
+      <EventGallery></EventGallery>
       <Newsletter></Newsletter>
     </div>
   );

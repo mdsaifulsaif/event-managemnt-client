@@ -1,6 +1,31 @@
 import { FaSearch, FaStar } from "react-icons/fa";
+import gsap from "gsap";
+import { useEffect, useRef } from "react";
 
 const Banner = () => {
+  const badgeRef = useRef(null);
+  const statsRef = useRef(null);
+
+  useEffect(() => {
+    // Up-down animation for badge
+    gsap.to(badgeRef.current, {
+      y: -15,
+      duration: 1.5,
+      repeat: -1,
+      yoyo: true,
+      ease: "power1.inOut",
+    });
+
+    // Left to right infinite loop for stats box
+    gsap.to(statsRef.current, {
+      x: 25,
+      duration: 2,
+      repeat: -1,
+      yoyo: true,
+      ease: "power1.inOut",
+    });
+  }, []);
+
   return (
     <section className="bg-[#f9fdfc] py-16 px-6">
       <div className="w-11/12 mx-auto grid grid-cols-1 md:grid-cols-2 items-center justify-center  gap-10">
@@ -35,7 +60,10 @@ const Banner = () => {
           />
 
           {/* Rating Badge */}
-          <div className="absolute top-[-20px] left-[-20px] bg-[#ff7043] text-white px-4 py-2 rounded-xl shadow-md">
+          <div
+            ref={badgeRef}
+            className="absolute top-[-20px] left-[-20px] bg-[#ff7043] text-white px-4 py-2 rounded-xl shadow-md"
+          >
             <div className="flex items-center gap-2 text-sm">
               <FaStar className="text-yellow-300" />5 Star
               <span className="text-xs text-white/80">
@@ -45,7 +73,10 @@ const Banner = () => {
           </div>
 
           {/* Stats Box */}
-          <div className="absolute bottom-[-20px] right-[20px] bg-white p-4 rounded-xl shadow-md text-sm text-gray-700 space-y-2">
+          <div
+            ref={statsRef}
+            className="absolute bottom-[-20px] right-[20px] bg-white p-4 rounded-xl shadow-md text-sm text-gray-700 space-y-2"
+          >
             <p>
               <strong className="text-[#129990]">72%</strong> Community Goal
             </p>

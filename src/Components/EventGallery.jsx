@@ -2,22 +2,22 @@ import Gallery from "react-photo-gallery";
 
 const photos = [
   {
-    src: "https://cdn.pixabay.com/photo/2025/05/31/20/23/trees-9634157_1280.jpg",
-    width: 4,
-    height: 3,
-  },
-  {
-    src: "https://cdn.pixabay.com/photo/2025/05/31/20/23/trees-9634157_1280.jpg",
+    src: "https://images.pexels.com/photos/3360701/pexels-photo-3360701.jpeg?auto=compress&cs=tinysrgb&w=600",
     width: 3,
-    height: 4,
+    height: 2,
   },
   {
-    src: "https://cdn.pixabay.com/photo/2025/05/31/20/23/trees-9634157_1280.jpg",
-    width: 1,
+    src: "https://images.pexels.com/photos/3028127/pexels-photo-3028127.jpeg?auto=compress&cs=tinysrgb&w=600",
+    width: 2,
     height: 1,
   },
   {
-    src: "https://cdn.pixabay.com/photo/2025/06/01/22/28/rose-9635995_1280.jpg",
+    src: "https://images.pexels.com/photos/698907/pexels-photo-698907.jpeg?auto=compress&cs=tinysrgb&w=600",
+    width: 2,
+    height: 1,
+  },
+  {
+    src: "https://images.pexels.com/photos/32355112/pexels-photo-32355112/free-photo-of-decorated-cow-at-a-festival-in-bangladesh.jpeg?auto=compress&cs=tinysrgb&w=600",
     width: 5,
     height: 1,
   },

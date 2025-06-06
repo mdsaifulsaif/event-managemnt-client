@@ -24,7 +24,12 @@ export const router = createBrowserRouter([
       },
       {
         path: "create-event",
-        Component: CreateEvent,
+        element: (
+          <PrivetRoute>
+            <CreateEvent></CreateEvent>
+          </PrivetRoute>
+        ),
+        // Component: CreateEvent,
       },
       {
         path: "upcoming-events",
@@ -45,14 +50,16 @@ export const router = createBrowserRouter([
             <JoindedEvents></JoindedEvents>
           </PrivetRoute>
         ),
-
-        // Component: JoindedEvents,
       },
       {
         path: "/manage-events/:userEmail",
         loader: ({ params }) =>
           fetch(`http://localhost:3000/user-events?email=${params.userEmail}`),
-        Component: ManageEvents,
+        element: (
+          <PrivetRoute>
+            <ManageEvents></ManageEvents>
+          </PrivetRoute>
+        ),
       },
       {
         path: "/update/:id",

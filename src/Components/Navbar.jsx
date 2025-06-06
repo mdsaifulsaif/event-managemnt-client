@@ -3,6 +3,8 @@ import { Link } from "react-router";
 import { FaSignOutAlt, FaCalendarAlt, FaBars } from "react-icons/fa";
 import { AuthContext } from "../AuthContext/AuthContextProvider";
 import Swal from "sweetalert2";
+import { Tooltip } from "react-tooltip";
+import "react-tooltip/dist/react-tooltip.css";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -43,7 +45,6 @@ const Navbar = () => {
 
       {/* Desktop Menu */}
       <div className="hidden md:flex items-center gap-6">
-        <button onClick={handleLogout}>logout</button>
         <Link
           to="/upcoming-events"
           className="text-gray-700 hover:text-[#129990] font-medium"
@@ -58,17 +59,24 @@ const Navbar = () => {
             onMouseLeave={() => setShowName(false)}
           >
             {/* Profile Image */}
-            <img
-              src={user?.photoURL}
-              alt="Profile"
-              onClick={() => setDropdownOpen(!dropdownOpen)}
-              className="w-10 h-10 rounded-full cursor-pointer border-2 border-[#129990]"
-            />
+            <a
+              className="mt-5"
+              data-tooltip-id="my-tooltip"
+              data-tooltip-content={user.displayName}
+            >
+              <img
+                src={user?.photoURL}
+                alt="Profile"
+                onClick={() => setDropdownOpen(!dropdownOpen)}
+                className="w-10 h-10 rounded-full cursor-pointer border-2 border-[#129990]"
+              />
+            </a>
+            <Tooltip id="my-tooltip" place="left" />
 
             {/* Hover Username */}
             {showName && (
               <div className="absolute  -top-6 left-1/2 transform -translate-x-1/2 text-sm bg-white border rounded px-2 py-1 shadow">
-                <h1 className="text-[#129990]">{user.displayName}</h1>
+                {/* <h1 className="text-[#129990]">{user.displayName}</h1> */}
               </div>
             )}
 
