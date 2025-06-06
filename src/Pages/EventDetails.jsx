@@ -10,8 +10,8 @@ function EventDetails() {
 
   const handleJoindEvent = (event) => {
     const joinedData = {
-      eventId: event._id,
-      eventTitle: event.title,
+      _id: event._id,
+      title: event.title,
       description: event.description,
       location: event.location,
       imageUrl: event.imageUrl,

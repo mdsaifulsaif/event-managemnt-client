@@ -7,6 +7,9 @@ const Navbar = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [showName, setShowName] = useState(false);
 
+  // const userEmail = "john.doe@example.com";
+  const userEmail = "john.doe@example.com";
+
   return (
     <nav className="bg-white   shadow-md px-20 py-4 flex justify-between items-center">
       {/* Logo */}
@@ -58,7 +61,7 @@ const Navbar = () => {
                 Create Event
               </Link>
               <Link
-                to="/manage-events"
+                to={`/manage-events/${userEmail}`}
                 className="block px-4 py-2 text-sm hover:bg-gray-100"
               >
                 Manage Events

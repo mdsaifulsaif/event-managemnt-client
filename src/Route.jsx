@@ -5,6 +5,8 @@ import Error404 from "./Pages/Error404";
 import CreateEvent from "./Components/CreateEvent";
 import UpcomingEvents from "./Pages/UpcomingEvents";
 import EventDetails from "./Pages/EventDetails";
+import JoindedEvents from "./Pages/JoindedEvents";
+import ManageEvents from "./Pages/ManageEvents";
 
 export const router = createBrowserRouter([
   {
@@ -30,6 +32,17 @@ export const router = createBrowserRouter([
         loader: ({ params }) =>
           fetch(`http://localhost:3000/event/${params.id}`),
         Component: EventDetails,
+      },
+      {
+        path: "joined-events",
+        loader: () => fetch("http://localhost:3000/joinded-Events"),
+        Component: JoindedEvents,
+      },
+      {
+        path: "/manage-events/:userEmail",
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/user-events?email=${params.userEmail}`),
+        Component: ManageEvents,
       },
     ],
   },
