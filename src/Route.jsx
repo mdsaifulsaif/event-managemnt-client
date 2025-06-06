@@ -7,6 +7,7 @@ import UpcomingEvents from "./Pages/UpcomingEvents";
 import EventDetails from "./Pages/EventDetails";
 import JoindedEvents from "./Pages/JoindedEvents";
 import ManageEvents from "./Pages/ManageEvents";
+import UpdateEvent from "./Pages/UpdateEvent";
 
 export const router = createBrowserRouter([
   {
@@ -43,6 +44,12 @@ export const router = createBrowserRouter([
         loader: ({ params }) =>
           fetch(`http://localhost:3000/user-events?email=${params.userEmail}`),
         Component: ManageEvents,
+      },
+      {
+        path: "/update/:id",
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/event/${params.id}`),
+        Component: UpdateEvent,
       },
     ],
   },
