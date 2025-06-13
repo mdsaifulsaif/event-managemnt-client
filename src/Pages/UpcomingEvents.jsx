@@ -1,10 +1,23 @@
-import React from "react";
+import React, { useState, useMemo } from "react";
 import { useLoaderData } from "react-router";
 import { Link } from "react-router";
 import { FaMapMarkerAlt, FaCalendarAlt } from "react-icons/fa";
 
 function UpcomingEvents() {
   const events = useLoaderData();
+  const [selectedType, setSelectedType] = useState("All");
+
+  // Extract unique event types
+  const eventTypes = useMemo(() => {
+    const types = events.map((event) => event.eventType);
+    return ["All", ...new Set(types)];
+  }, [events]);
+
+  // Filter events based on selectedType
+  const filteredEvents = useMemo(() => {
+    if (selectedType === "All") return events;
+    return events.filter((event) => event.eventType === selectedType);
+  }, [events, selectedType]);
 
   return (
     <section className="px-6 py-10 max-w-7xl mx-auto">
@@ -12,8 +25,24 @@ function UpcomingEvents() {
         Upcoming Events
       </h2>
 
+      {/* Filter Dropdown */}
+      <div className="mb-6 flex justify-end">
+        <select
+          value={selectedType}
+          onChange={(e) => setSelectedType(e.target.value)}
+          className="border border-gray-300 rounded px-4 py-2"
+        >
+          {eventTypes.map((type) => (
+            <option key={type} value={type}>
+              {type}
+            </option>
+          ))}
+        </select>
+      </div>
+
+      {/* Events Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {events.map((event) => (
+        {filteredEvents.map((event) => (
           <div
             key={event._id}
             className="bg-white shadow rounded-lg p-4 border border-gray-100"

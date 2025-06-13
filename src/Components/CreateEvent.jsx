@@ -1,13 +1,16 @@
 import axios from "axios";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Swal from "sweetalert2";
+import { AuthContext } from "../AuthContext/AuthContextProvider";
 
 // Mocked user email — in real case, you'd get this from auth context
-const userEmail = "john.doe@example.com";
 
 const CreateEvent = () => {
+  const { user } = useContext(AuthContext);
+  // const token = user.accessToken;
+  // console.log(token);
   const [formData, setFormData] = useState({
     title: "",
     description: "",
@@ -16,6 +19,8 @@ const CreateEvent = () => {
     location: "",
     date: null,
   });
+
+  const userEmail = user?.email;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -35,7 +40,7 @@ const CreateEvent = () => {
     };
 
     axios
-      .post("http://localhost:3000/event", eventData)
+      .post("http://localhost:3000/event", eventData, { withCredentials: true })
       .then((response) => {
         if (response.data.insertedId) {
           // e.target.reset();

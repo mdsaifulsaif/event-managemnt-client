@@ -14,7 +14,7 @@ const Navbar = () => {
   const { user, signOutUser } = useContext(AuthContext);
 
   // const userEmail = "john.doe@example.com";
-  const userEmail = "john.doe@example.com";
+  const userEmail = user?.email;
 
   const handleLogout = () => {
     signOutUser()

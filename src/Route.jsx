@@ -33,7 +33,10 @@ export const router = createBrowserRouter([
       },
       {
         path: "upcoming-events",
-        loader: () => fetch("http://localhost:3000/events"),
+        loader: () =>
+          fetch(`http://localhost:3000/events`, {
+            credentials: "include",
+          }),
         Component: UpcomingEvents,
       },
       {
@@ -44,7 +47,10 @@ export const router = createBrowserRouter([
       },
       {
         path: "joined-events",
-        loader: () => fetch("http://localhost:3000/joinded-Events"),
+        loader: () =>
+          fetch("http://localhost:3000/joinded-Events", {
+            credentials: "include",
+          }),
         element: (
           <PrivetRoute>
             <JoindedEvents></JoindedEvents>
@@ -54,7 +60,9 @@ export const router = createBrowserRouter([
       {
         path: "/manage-events/:userEmail",
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/user-events?email=${params.userEmail}`),
+          fetch(`http://localhost:3000/user-events?email=${params.userEmail}`, {
+            credentials: "include",
+          }),
         element: (
           <PrivetRoute>
             <ManageEvents></ManageEvents>

@@ -21,6 +21,8 @@ function Login() {
       .then((res) => {
         const loggetuser = res.user;
 
+        console.log(loggetuser);
+
         if (location.state === null) {
           navigate("/");
         } else {

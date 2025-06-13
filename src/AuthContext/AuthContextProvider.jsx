@@ -12,6 +12,7 @@ export const AuthContext = createContext();
 
 import React from "react";
 import { auth } from "../Firebase";
+import axios from "axios";
 
 function AuthContextProvider({ children }) {
   const provider = new GoogleAuthProvider();
@@ -44,6 +45,21 @@ function AuthContextProvider({ children }) {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       setLodding(false);
+
+      if (currentUser?.email) {
+        const userData = { email: currentUser.email };
+        axios
+          .post("http://localhost:3000/jwt", userData, {
+            withCredentials: true,
+          })
+          .then((res) => {
+            console.log("after token", res.data);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
+      console.log("current user from aut", currentUser);
     });
 
     return () => {

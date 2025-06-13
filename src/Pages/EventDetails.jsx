@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useLoaderData } from "react-router";
 import { FaMapMarkerAlt, FaCalendarAlt, FaUser, FaTag } from "react-icons/fa";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { AuthContext } from "../AuthContext/AuthContextProvider";
 
 function EventDetails() {
+  const { user } = useContext(AuthContext);
   const event = useLoaderData();
-  const currentUser = "user@gmail.com";
+  // const currentUser = "user@gmail.com";
+  const currentUser = user?.email;
+  console.log(event.date);
 
   const handleJoindEvent = (event) => {
     const joinedData = {
@@ -18,7 +22,7 @@ function EventDetails() {
       eventType: event.eventType,
       createdBy: event.createdBy,
       userEmail: currentUser,
-      date: event.data,
+      date: event.date,
       joinedAt: new Date(),
     };
 
