@@ -1,23 +1,37 @@
-import React, { useState, useMemo } from "react";
-import { useLoaderData } from "react-router";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { Link } from "react-router";
 import { FaMapMarkerAlt, FaCalendarAlt } from "react-icons/fa";
 
 function UpcomingEvents() {
-  const events = useLoaderData();
+  const [events, setEvents] = useState([]);
+  const [eventTypes, setEventTypes] = useState([]);
   const [selectedType, setSelectedType] = useState("All");
+  const [searchTerm, setSearchTerm] = useState("");
 
-  // Extract unique event types
-  const eventTypes = useMemo(() => {
-    const types = events.map((event) => event.eventType);
-    return ["All", ...new Set(types)];
-  }, [events]);
+  // Fetch filtered events from backend
+  const fetchEvents = async () => {
+    try {
+      const res = await axios.get("http://localhost:3000/events", {
+        params: {
+          eventType: selectedType,
+          search: searchTerm,
+        },
+        withCredentials: true,
+      });
+      setEvents(res.data);
 
-  // Filter events based on selectedType
-  const filteredEvents = useMemo(() => {
-    if (selectedType === "All") return events;
-    return events.filter((event) => event.eventType === selectedType);
-  }, [events, selectedType]);
+      // Collect event types
+      const types = new Set(res.data.map((event) => event.eventType));
+      setEventTypes(["All", ...types]);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  useEffect(() => {
+    fetchEvents();
+  }, [selectedType, searchTerm]);
 
   return (
     <section className="px-6 py-10 max-w-7xl mx-auto">
@@ -25,8 +39,8 @@ function UpcomingEvents() {
         Upcoming Events
       </h2>
 
-      {/* Filter Dropdown */}
-      <div className="mb-6 flex justify-end">
+      {/* Filter & Search Controls */}
+      <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mb-6">
         <select
           value={selectedType}
           onChange={(e) => setSelectedType(e.target.value)}
@@ -38,11 +52,19 @@ function UpcomingEvents() {
             </option>
           ))}
         </select>
+
+        <input
+          type="text"
+          placeholder="Search by event name..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="border border-gray-300 rounded px-4 py-2 w-full sm:w-72"
+        />
       </div>
 
       {/* Events Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {filteredEvents.map((event) => (
+        {events.map((event) => (
           <div
             key={event._id}
             className="bg-white shadow rounded-lg p-4 border border-gray-100"
