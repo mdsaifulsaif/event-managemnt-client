@@ -1,6 +1,13 @@
-import { use, useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router";
-import { FaSignOutAlt, FaCalendarAlt, FaBars } from "react-icons/fa";
+import {
+  FaBars,
+  FaTimes,
+  FaMoon,
+  FaSun,
+  FaSignOutAlt,
+  FaCalendarAlt,
+} from "react-icons/fa";
 import { AuthContext } from "../AuthContext/AuthContextProvider";
 import Swal from "sweetalert2";
 import { Tooltip } from "react-tooltip";
@@ -9,31 +16,35 @@ import "react-tooltip/dist/react-tooltip.css";
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [showName, setShowName] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
 
   const { user, signOutUser } = useContext(AuthContext);
-
-  // const userEmail = "john.doe@example.com";
   const userEmail = user?.email;
+
+  // Apply/remove dark mode class
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [darkMode]);
 
   const handleLogout = () => {
     signOutUser()
       .then(() => {
         Swal.fire({
-          title: "LogOut successfully!",
+          title: "Logged out successfully!",
           icon: "success",
           iconColor: "#129990",
           confirmButtonColor: "#129990",
-          draggable: true,
         });
       })
-      .catch((error) => {
-        console.log(error);
-      });
+      .catch(console.log);
   };
 
   return (
-    <nav className="bg-white     shadow-md px-5 md:px-20 py-4 flex justify-between items-center">
+    <nav className="bg-white dark:bg-gray-900 shadow-md px-5 md:px-20 py-4 flex justify-between items-center relative z-50">
       {/* Logo */}
       <Link
         to="/"
@@ -44,23 +55,21 @@ const Navbar = () => {
       </Link>
 
       {/* Desktop Menu */}
-      <div className="hidden md:flex items-center gap-6">
+      <div className="hidden md:flex items-center gap-6 text-gray-800 dark:text-white">
         <Link
           to="/upcoming-events"
-          className="text-gray-700 hover:text-[#129990] font-medium"
+          className="hover:text-[#129990] font-medium"
         >
           Upcoming Events
         </Link>
 
+        <button onClick={() => setDarkMode(!darkMode)} className="text-xl">
+          {darkMode ? <FaSun /> : <FaMoon />}
+        </button>
+
         {user ? (
-          <div
-            className="relative"
-            onMouseEnter={() => setShowName(true)}
-            onMouseLeave={() => setShowName(false)}
-          >
-            {/* Profile Image */}
+          <div className="relative">
             <a
-              className="mt-5"
               data-tooltip-id="my-tooltip"
               data-tooltip-content={user.displayName}
             >
@@ -72,38 +81,29 @@ const Navbar = () => {
               />
             </a>
             <Tooltip id="my-tooltip" place="left" />
-
-            {/* Hover Username */}
-            {showName && (
-              <div className="absolute  -top-6 left-1/2 transform -translate-x-1/2 text-sm bg-white border rounded px-2 py-1 shadow">
-                {/* <h1 className="text-[#129990]">{user.displayName}</h1> */}
-              </div>
-            )}
-
-            {/* Dropdown Menu */}
             {dropdownOpen && (
-              <div className="absolute right-0 mt-2 w-48 bg-white border rounded shadow-lg z-50">
+              <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 border rounded shadow-lg z-50">
                 <Link
                   to="/create-event"
-                  className="block px-4 py-2 text-sm hover:bg-gray-100"
+                  className="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700"
                 >
                   Create Event
                 </Link>
                 <Link
                   to={`/manage-events/${userEmail}`}
-                  className="block px-4 py-2 text-sm hover:bg-gray-100"
+                  className="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700"
                 >
                   Manage Events
                 </Link>
                 <Link
                   to="/joined-events"
-                  className="block px-4 py-2 text-sm hover:bg-gray-100"
+                  className="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700"
                 >
                   Joined Events
                 </Link>
                 <button
                   onClick={handleLogout}
-                  className="w-full text-left px-4 py-2 text-sm text-red-500 hover:bg-gray-100"
+                  className="w-full text-left px-4 py-2 text-sm text-red-500 hover:bg-gray-100 dark:hover:bg-gray-700"
                 >
                   <FaSignOutAlt className="inline mr-2" />
                   Logout
@@ -113,56 +113,90 @@ const Navbar = () => {
           </div>
         ) : (
           <Link to="/login">
-            <button className="bg-[#129990] py-1 text-lg font-semibold text-white  px-2 rounded-sm">
+            <button className="bg-[#129990] text-white px-3 py-1 rounded">
               Login
             </button>
           </Link>
         )}
-
-        {/* Profile Dropdown */}
       </div>
 
-      {/* Mobile Menu Button */}
+      {/* Mobile Menu Toggle */}
       <div className="md:hidden">
         <button onClick={() => setMenuOpen(!menuOpen)}>
-          <FaBars className="text-2xl text-gray-700" />
+          {menuOpen ? (
+            <FaTimes className="text-2xl text-gray-700 dark:text-white" />
+          ) : (
+            <FaBars className="text-2xl text-gray-700 dark:text-white" />
+          )}
         </button>
       </div>
 
       {/* Mobile Menu Dropdown */}
       {menuOpen && (
-        <div className="absolute top-16 left-0 w-full bg-white shadow-md border-t md:hidden z-50">
+        <div className="absolute top-full right-5 w-64 mt-2 bg-white dark:bg-gray-900 border rounded-md shadow-lg md:hidden z-50 p-4 space-y-3 text-gray-800 dark:text-white">
           <Link
             to="/upcoming-events"
-            className="block px-6 py-3 border-b hover:bg-gray-100"
+            className="block hover:text-[#129990]"
+            onClick={() => setMenuOpen(false)}
           >
             Upcoming Events
           </Link>
-          <Link
-            to="/create-event"
-            className="block px-6 py-3 border-b hover:bg-gray-100"
-          >
-            Create Event
-          </Link>
-          <Link
-            to="/manage-events"
-            className="block px-6 py-3 border-b hover:bg-gray-100"
-          >
-            Manage Events
-          </Link>
-          <Link
-            to="/joined-events"
-            className="block px-6 py-3 border-b hover:bg-gray-100"
-          >
-            Joined Events
-          </Link>
+
           <button
-            onClick={handleLogout}
-            className="w-full text-left px-6 py-3 text-red-500 hover:bg-gray-100"
+            onClick={() => {
+              setDarkMode(!darkMode);
+              setMenuOpen(false);
+            }}
+            className="flex items-center gap-2 text-xl"
           >
-            <FaSignOutAlt className="inline mr-2" />
-            Logout
+            {darkMode ? <FaSun /> : <FaMoon />}
+            <span>{darkMode ? "Light Mode" : "Dark Mode"}</span>
           </button>
+
+          {user ? (
+            <>
+              <Link
+                to="/create-event"
+                className="block hover:text-[#129990]"
+                onClick={() => setMenuOpen(false)}
+              >
+                Create Event
+              </Link>
+              <Link
+                to={`/manage-events/${userEmail}`}
+                className="block hover:text-[#129990]"
+                onClick={() => setMenuOpen(false)}
+              >
+                Manage Events
+              </Link>
+              <Link
+                to="/joined-events"
+                className="block hover:text-[#129990]"
+                onClick={() => setMenuOpen(false)}
+              >
+                Joined Events
+              </Link>
+              <button
+                onClick={() => {
+                  handleLogout();
+                  setMenuOpen(false);
+                }}
+                className="text-red-500 hover:text-red-600"
+              >
+                <FaSignOutAlt className="inline mr-2" />
+                Logout
+              </button>
+            </>
+          ) : (
+            <Link to="/login">
+              <button
+                className="bg-[#129990] text-white px-3 py-1 rounded w-full"
+                onClick={() => setMenuOpen(false)}
+              >
+                Login
+              </button>
+            </Link>
+          )}
         </div>
       )}
     </nav>

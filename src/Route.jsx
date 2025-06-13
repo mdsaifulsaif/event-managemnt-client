@@ -43,7 +43,12 @@ export const router = createBrowserRouter([
         path: "event-details/:id",
         loader: ({ params }) =>
           fetch(`http://localhost:3000/event/${params.id}`),
-        Component: EventDetails,
+        // Component: EventDetails,
+        element: (
+          <PrivetRoute>
+            <EventDetails></EventDetails>
+          </PrivetRoute>
+        ),
       },
       {
         path: "joined-events",

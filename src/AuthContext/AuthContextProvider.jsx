@@ -69,6 +69,7 @@ function AuthContextProvider({ children }) {
 
   const userInfo = {
     user,
+    lodding,
     setUser,
     crateUser,
     googleLogin,

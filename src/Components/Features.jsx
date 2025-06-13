@@ -34,7 +34,7 @@ const features = [
 
 const Features = () => {
   return (
-    <section className="py-20 px-6 bg-[#f9fdfc]">
+    <section className="py-20 px-6">
       <div className="w-11/12 mx-auto text-center">
         <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
           What You Can Do with ImpactHub

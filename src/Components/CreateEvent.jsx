@@ -125,8 +125,8 @@ const CreateEvent = () => {
           <DatePicker
             selected={formData.date}
             onChange={handleDateChange}
-            // minDate={new Date()}
-            dateFormat="MMMM d, yyyy" // Optional: Format shown in input
+            minDate={new Date()}
+            dateFormat="MMMM d, yyyy"
             placeholderText="Select future date"
             className="w-full border px-4 py-2 rounded-md"
             required

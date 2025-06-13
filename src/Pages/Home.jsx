@@ -14,7 +14,7 @@ function Home() {
       </Helmet>
       <Banner></Banner>
       <Features></Features>
-      <EventGallery></EventGallery>
+      <Gallery></Gallery>
       <Newsletter></Newsletter>
     </div>
   );
