@@ -43,7 +43,6 @@ const CreateEvent = () => {
       .post("http://localhost:3000/event", eventData, { withCredentials: true })
       .then((response) => {
         if (response.data.insertedId) {
-          // e.target.reset();
           Swal.fire({
             title: "Event Added Successfully!",
             icon: "success",
@@ -51,11 +50,19 @@ const CreateEvent = () => {
             confirmButtonColor: "#129990",
             draggable: true,
           });
+
+          //  Clear the form
+          setFormData({
+            title: "",
+            description: "",
+            eventType: "",
+            imageUrl: "",
+            location: "",
+            date: null,
+          });
         }
       })
-      .catch((error) => {
-        console.log("Error submitting event:", error);
-      });
+      .catch((error) => {});
   };
 
   return (

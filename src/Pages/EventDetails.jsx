@@ -10,7 +10,6 @@ function EventDetails() {
   const event = useLoaderData();
   // const currentUser = "user@gmail.com";
   const currentUser = user?.email;
-  console.log(event.date);
 
   const handleJoindEvent = (event) => {
     const joinedData = {

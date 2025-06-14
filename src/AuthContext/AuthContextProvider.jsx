@@ -52,14 +52,11 @@ function AuthContextProvider({ children }) {
           .post("http://localhost:3000/jwt", userData, {
             withCredentials: true,
           })
-          .then((res) => {
-            console.log("after token", res.data);
-          })
+          .then((res) => {})
           .catch((error) => {
             console.log(error);
           });
       }
-      console.log("current user from aut", currentUser);
     });
 
     return () => {

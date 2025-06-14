@@ -44,7 +44,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-white dark:bg-gray-900 shadow-md px-5 md:px-20 py-4 flex justify-between items-center relative z-50">
+    <nav className="bg-white  shadow-md px-5 md:px-20 py-4 flex justify-between items-center relative z-50">
       {/* Logo */}
       <Link
         to="/"
@@ -55,7 +55,7 @@ const Navbar = () => {
       </Link>
 
       {/* Desktop Menu */}
-      <div className="hidden md:flex items-center gap-6 text-gray-800 dark:text-white">
+      <div className="hidden md:flex items-center gap-6 text-gray-800 ">
         <Link
           to="/upcoming-events"
           className="hover:text-[#129990] font-medium"
@@ -82,28 +82,28 @@ const Navbar = () => {
             </a>
             <Tooltip id="my-tooltip" place="left" />
             {dropdownOpen && (
-              <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 border rounded shadow-lg z-50">
+              <div className="absolute right-0 mt-2 w-48 bg-white  border rounded shadow-lg z-50">
                 <Link
                   to="/create-event"
-                  className="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700"
+                  className="block px-4 py-2 text-sm hover:bg-gray-100 "
                 >
                   Create Event
                 </Link>
                 <Link
                   to={`/manage-events/${userEmail}`}
-                  className="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700"
+                  className="block px-4 py-2 text-sm hover:bg-gray-100 "
                 >
                   Manage Events
                 </Link>
                 <Link
                   to="/joined-events"
-                  className="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700"
+                  className="block px-4 py-2 text-sm hover:bg-gray-100 "
                 >
                   Joined Events
                 </Link>
                 <button
                   onClick={handleLogout}
-                  className="w-full text-left px-4 py-2 text-sm text-red-500 hover:bg-gray-100 dark:hover:bg-gray-700"
+                  className="w-full text-left px-4 py-2 text-sm text-red-500 hover:bg-gray-100 "
                 >
                   <FaSignOutAlt className="inline mr-2" />
                   Logout
@@ -122,11 +122,14 @@ const Navbar = () => {
 
       {/* Mobile Menu Toggle */}
       <div className="md:hidden">
+        <button onClick={() => setDarkMode(!darkMode)} className="text-xl mr-5">
+          {darkMode ? <FaSun /> : <FaMoon />}
+        </button>
         <button onClick={() => setMenuOpen(!menuOpen)}>
           {menuOpen ? (
-            <FaTimes className="text-2xl text-gray-700 dark:text-white" />
+            <FaTimes className="text-2xl text-gray-700 " />
           ) : (
-            <FaBars className="text-2xl text-gray-700 dark:text-white" />
+            <FaBars className="text-2xl text-gray-700 " />
           )}
         </button>
       </div>

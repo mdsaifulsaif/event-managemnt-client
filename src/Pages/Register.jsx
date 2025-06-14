@@ -1,6 +1,6 @@
 import React, { use, useContext, useRef, useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 import { useNavigate } from "react-router";
 
 import Swal from "sweetalert2";
@@ -8,6 +8,8 @@ import { updateProfile } from "firebase/auth";
 import { AuthContext } from "../AuthContext/AuthContextProvider";
 
 function Register() {
+  const navigate = useNavigate();
+  const location = useLocation();
   const { crateUser, googleLogin, setUser } = useContext(AuthContext);
   const [errorMassage, setErrorMassage] = useState();
 
@@ -30,6 +32,22 @@ function Register() {
     crateUser(email, password)
       .then((res) => {
         const user = res.user;
+
+        if (user) {
+          Swal.fire({
+            title: "login Successfully!",
+            icon: "success",
+            iconColor: "#129990",
+            confirmButtonColor: "#129990",
+            draggable: true,
+          });
+
+          if (location.state === null) {
+            navigate("/");
+          } else {
+            navigate(location.state);
+          }
+        }
         //  Update Firebase user profile with name and photo
         const userupdate = updateProfile(user, {
           displayName: name,

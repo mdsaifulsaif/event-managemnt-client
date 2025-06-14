@@ -1,12 +1,16 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { useLoaderData } from "react-router";
+import { useLoaderData, useNavigate } from "react-router";
 import Swal from "sweetalert2";
+import { AuthContext } from "../AuthContext/AuthContextProvider";
 
 const UpdateEvent = () => {
+  const { user } = useContext(AuthContext);
+  const usermail = user.email;
   const data = useLoaderData();
+  const navigate = useNavigate();
   const {
     _id,
     title,
@@ -27,7 +31,7 @@ const UpdateEvent = () => {
     date: null,
   });
 
-  // ✅ Load existing event data into formData
+  //  Load existing event data into formData
   useEffect(() => {
     if (data) {
       setFormData({
@@ -68,6 +72,7 @@ const UpdateEvent = () => {
             iconColor: "#129990",
             confirmButtonColor: "#129990",
           });
+          navigate(`/manage-events/${usermail}`);
         }
       })
       .catch((error) => {

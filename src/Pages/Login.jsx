@@ -19,9 +19,13 @@ function Login() {
 
     LoginUser(email, password)
       .then((res) => {
-        const loggetuser = res.user;
-
-        console.log(loggetuser);
+        Swal.fire({
+          title: "Login Successfully!",
+          icon: "success",
+          iconColor: "#129990",
+          confirmButtonColor: "#129990",
+          draggable: true,
+        });
 
         if (location.state === null) {
           navigate("/");

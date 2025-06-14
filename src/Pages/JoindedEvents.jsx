@@ -4,7 +4,7 @@ import { Link, useLoaderData } from "react-router";
 
 function JoindedEvents() {
   const joinedEvents = useLoaderData();
-  console.log(joinedEvents);
+
   return (
     <section className="px-6 py-10 max-w-7xl mx-auto">
       <h2 className="text-3xl font-bold text-center text-[#129990] mb-8">
