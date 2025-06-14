@@ -96,7 +96,7 @@ const Navbar = () => {
                   Manage Events
                 </Link>
                 <Link
-                  to="/joined-events"
+                  to={`/joined-events/${userEmail}`}
                   className="block px-4 py-2 text-sm hover:bg-gray-100 "
                 >
                   Joined Events
@@ -144,17 +144,6 @@ const Navbar = () => {
           >
             Upcoming Events
           </Link>
-
-          <button
-            onClick={() => {
-              setDarkMode(!darkMode);
-              setMenuOpen(false);
-            }}
-            className="flex items-center gap-2 text-xl"
-          >
-            {darkMode ? <FaSun /> : <FaMoon />}
-            <span>{darkMode ? "Light Mode" : "Dark Mode"}</span>
-          </button>
 
           {user ? (
             <>

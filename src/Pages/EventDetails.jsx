@@ -4,6 +4,7 @@ import { FaMapMarkerAlt, FaCalendarAlt, FaUser, FaTag } from "react-icons/fa";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { AuthContext } from "../AuthContext/AuthContextProvider";
+import { Helmet } from "react-helmet-async";
 
 function EventDetails() {
   const { user } = useContext(AuthContext);
@@ -26,7 +27,9 @@ function EventDetails() {
     };
 
     axios
-      .post("http://localhost:3000/join-event", joinedData)
+      .post("http://localhost:3000/join-event", joinedData, {
+        withCredentials: true,
+      })
       .then((res) => {
         if (res.data.insertedId) {
           Swal.fire({
@@ -53,6 +56,9 @@ function EventDetails() {
 
   return (
     <div className="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-lg mt-10">
+      <Helmet>
+        <title>Impacthub | Event Details</title>
+      </Helmet>
       <img
         src={event.imageUrl}
         alt={event.title}

@@ -51,11 +51,12 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "joined-events",
-        loader: () =>
-          fetch("http://localhost:3000/joinded-Events", {
+        path: "/joined-events/:email",
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/joinded-Events/${params.email}`, {
             credentials: "include",
           }),
+
         element: (
           <PrivetRoute>
             <JoindedEvents></JoindedEvents>

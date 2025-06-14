@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router";
 import { FaMapMarkerAlt, FaCalendarAlt } from "react-icons/fa";
+import { Helmet } from "react-helmet-async";
 
 function UpcomingEvents() {
   const [events, setEvents] = useState([]);
@@ -34,11 +35,13 @@ function UpcomingEvents() {
   }, [selectedType, searchTerm]);
 
   return (
-    <section className="px-6 py-10 max-w-7xl mx-auto">
+    <section className="px-6 py-10 w-11/12 mx-auto">
       <h2 className="text-3xl font-bold text-center text-[#129990] mb-8">
         Upcoming Events
       </h2>
-
+      <Helmet>
+        <title>Impacthub | Upcomming Events</title>
+      </Helmet>
       {/* Filter & Search Controls */}
       <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mb-6">
         <select
@@ -70,7 +73,7 @@ function UpcomingEvents() {
             className="bg-white shadow rounded-lg p-4 border border-gray-100"
           >
             <img
-              src={event.thumbnail}
+              src={event.imageUrl}
               alt={event.title}
               className="w-full h-48 object-cover rounded"
             />

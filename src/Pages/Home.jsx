@@ -10,7 +10,7 @@ function Home() {
   return (
     <div className=" min-h-38  mx-auto">
       <Helmet>
-        <title>Ninja | Home</title>
+        <title>Impacthub | Home</title>
       </Helmet>
       <Banner></Banner>
       <Features></Features>

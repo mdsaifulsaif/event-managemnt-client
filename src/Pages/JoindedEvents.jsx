@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 import { FaCalendarAlt, FaMapMarkerAlt } from "react-icons/fa";
 import { Link, useLoaderData } from "react-router";
 
@@ -10,6 +11,9 @@ function JoindedEvents() {
       <h2 className="text-3xl font-bold text-center text-[#129990] mb-8">
         Your Joined Events
       </h2>
+      <Helmet>
+        <title>Impacthub | Joined Events</title>
+      </Helmet>
 
       {joinedEvents.length === 0 ? (
         <p className="text-center text-gray-500">

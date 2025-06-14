@@ -52,6 +52,16 @@ function Login() {
       .then((res) => {
         const user = res.user;
 
+        if (user) {
+          Swal.fire({
+            title: "Login Successfully!",
+            icon: "success",
+            iconColor: "#129990",
+            confirmButtonColor: "#129990",
+            draggable: true,
+          });
+        }
+
         if (location.state === null) {
           navigate("/");
         } else {
@@ -68,7 +78,7 @@ function Login() {
     <div className="flex items-center justify-center h-screen dark:text-gray-900">
       <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
         <Helmet>
-          <title>Ninja | Login</title>
+          <title>Impacthub | Login</title>
         </Helmet>
         <div className="card-body">
           <h1 className="text-3xl font-bold ">Login now!</h1>

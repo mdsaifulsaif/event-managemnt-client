@@ -5,6 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useLoaderData, useNavigate } from "react-router";
 import Swal from "sweetalert2";
 import { AuthContext } from "../AuthContext/AuthContextProvider";
+import { Helmet } from "react-helmet-async";
 
 const UpdateEvent = () => {
   const { user } = useContext(AuthContext);
@@ -82,6 +83,9 @@ const UpdateEvent = () => {
 
   return (
     <section className="max-w-3xl mx-auto px-4 py-10">
+      <Helmet>
+        <title>Impacthub | Update Event</title>
+      </Helmet>
       <h2 className="text-3xl font-bold mb-6 text-[#129990]">Update Event</h2>
       <form
         onSubmit={handleSubmit}

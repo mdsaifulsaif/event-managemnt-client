@@ -93,7 +93,7 @@ function Register() {
       <div className="flex my-5  items-center justify-center h-screen">
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
           <Helmet>
-            <title>Ninja | Register</title>
+            <title>Impacthub | Register</title>
           </Helmet>
           <div className="card-body">
             <h1 className="text-3xl font-bold">Register Now!</h1>

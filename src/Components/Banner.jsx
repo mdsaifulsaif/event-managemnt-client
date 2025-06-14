@@ -35,7 +35,7 @@ const Banner = () => {
             Volunteer events made easier for everyone
           </h1>
           <p className="text-gray-600 text-lg mb-6">
-            EventMatea helps you discover and join local community-driven
+            Impacthub helps you discover and join local community-driven
             initiatives like clean-ups, plantations, and awareness drives.
           </p>
           <div className="flex items-center bg-white rounded-full shadow-md max-w-md mx-auto md:mx-0 px-4 py-2 gap-2">
