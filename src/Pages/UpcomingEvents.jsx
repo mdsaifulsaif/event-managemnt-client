@@ -1,71 +1,15 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router";
+import { Link, useLoaderData } from "react-router";
 import { FaMapMarkerAlt, FaCalendarAlt } from "react-icons/fa";
 import { Helmet } from "react-helmet-async";
+import LoaddingSpinner from "../Components/LoaddingSpinner";
 
 function UpcomingEvents() {
-  const [events, setEvents] = useState([]);
-  const [eventTypes, setEventTypes] = useState([]);
-  const [selectedType, setSelectedType] = useState("All");
-  const [searchTerm, setSearchTerm] = useState("");
-
-  // Fetch filtered events from backend
-  const fetchEvents = async () => {
-    try {
-      const res = await axios.get("http://localhost:3000/events", {
-        params: {
-          eventType: selectedType,
-          search: searchTerm,
-        },
-        withCredentials: true,
-      });
-      setEvents(res.data);
-
-      // Collect event types
-      const types = new Set(res.data.map((event) => event.eventType));
-      setEventTypes(["All", ...types]);
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
-  useEffect(() => {
-    fetchEvents();
-  }, [selectedType, searchTerm]);
+  const events = useLoaderData();
 
   return (
     <section className="px-6 py-10 w-11/12 mx-auto">
-      <h2 className="text-3xl font-bold text-center text-[#129990] mb-8">
-        Upcoming Events
-      </h2>
-      <Helmet>
-        <title>Impacthub | Upcomming Events</title>
-      </Helmet>
-      {/* Filter & Search Controls */}
-      <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mb-6">
-        <select
-          value={selectedType}
-          onChange={(e) => setSelectedType(e.target.value)}
-          className="border border-gray-300 rounded px-4 py-2"
-        >
-          {eventTypes.map((type) => (
-            <option key={type} value={type}>
-              {type}
-            </option>
-          ))}
-        </select>
-
-        <input
-          type="text"
-          placeholder="Search by event name..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className="border border-gray-300 rounded px-4 py-2 w-full sm:w-72"
-        />
-      </div>
-
-      {/* Events Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {events.map((event) => (
           <div

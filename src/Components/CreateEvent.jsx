@@ -5,11 +5,13 @@ import "react-datepicker/dist/react-datepicker.css";
 import Swal from "sweetalert2";
 import { AuthContext } from "../AuthContext/AuthContextProvider";
 import { Helmet } from "react-helmet-async";
+import { useNavigate } from "react-router";
 
 // Mocked user email — in real case, you'd get this from auth context
 
 const CreateEvent = () => {
   const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
   // const token = user.accessToken;
   // console.log(token);
   const [formData, setFormData] = useState({
@@ -41,7 +43,9 @@ const CreateEvent = () => {
     };
 
     axios
-      .post("http://localhost:3000/event", eventData, { withCredentials: true })
+      .post("https://server-site-ruby-eight.vercel.app/event", eventData, {
+        withCredentials: true,
+      })
       .then((response) => {
         if (response.data.insertedId) {
           Swal.fire({
@@ -61,6 +65,8 @@ const CreateEvent = () => {
             location: "",
             date: null,
           });
+
+          navigate(`/manage-events/${userEmail}`);
         }
       })
       .catch((error) => {});

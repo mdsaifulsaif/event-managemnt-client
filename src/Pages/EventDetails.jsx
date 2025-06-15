@@ -25,9 +25,10 @@ function EventDetails() {
       date: event.date,
       joinedAt: new Date(),
     };
+    console.log("joined data ", joinedData);
 
     axios
-      .post("http://localhost:3000/join-event", joinedData, {
+      .post("https://server-site-ruby-eight.vercel.app/joinevent", joinedData, {
         withCredentials: true,
       })
       .then((res) => {
@@ -42,7 +43,7 @@ function EventDetails() {
         }
       })
       .catch((error) => {
-        if (error.status === 400) {
+        if (error) {
           Swal.fire({
             icon: "error",
             title: "You have alrady added this event",
@@ -51,7 +52,6 @@ function EventDetails() {
           });
         }
       });
-    // console.log(joinedData);
   };
 
   return (

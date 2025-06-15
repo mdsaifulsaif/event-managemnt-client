@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { Link } from "react-router";
+import { Link, NavLink } from "react-router";
 import {
   FaBars,
   FaTimes,
@@ -56,12 +56,15 @@ const Navbar = () => {
 
       {/* Desktop Menu */}
       <div className="hidden md:flex items-center gap-6 text-gray-800 ">
-        <Link
+        <NavLink to="/" className="hover:text-[#129990] font-medium">
+          Home
+        </NavLink>
+        <NavLink
           to="/upcoming-events"
           className="hover:text-[#129990] font-medium"
         >
           Upcoming Events
-        </Link>
+        </NavLink>
 
         <button onClick={() => setDarkMode(!darkMode)} className="text-xl">
           {darkMode ? <FaSun /> : <FaMoon />}
@@ -137,37 +140,41 @@ const Navbar = () => {
       {/* Mobile Menu Dropdown */}
       {menuOpen && (
         <div className="absolute top-full right-5 w-64 mt-2 bg-white dark:bg-gray-900 border rounded-md shadow-lg md:hidden z-50 p-4 space-y-3 text-gray-800 dark:text-white">
-          <Link
+          <NavLink to="/" className="block hover:text-[#129990]">
+            Home
+          </NavLink>
+          <NavLink
             to="/upcoming-events"
             className="block hover:text-[#129990]"
             onClick={() => setMenuOpen(false)}
           >
             Upcoming Events
-          </Link>
+          </NavLink>
 
           {user ? (
             <>
-              <Link
+              <NavLink
                 to="/create-event"
                 className="block hover:text-[#129990]"
                 onClick={() => setMenuOpen(false)}
               >
                 Create Event
-              </Link>
-              <Link
+              </NavLink>
+              <NavLink
                 to={`/manage-events/${userEmail}`}
                 className="block hover:text-[#129990]"
                 onClick={() => setMenuOpen(false)}
               >
                 Manage Events
-              </Link>
-              <Link
-                to="/joined-events"
+              </NavLink>
+              <NavLink
+                // to="/joined-events"
+                to={`/joined-events/${userEmail}`}
                 className="block hover:text-[#129990]"
                 onClick={() => setMenuOpen(false)}
               >
                 Joined Events
-              </Link>
+              </NavLink>
               <button
                 onClick={() => {
                   handleLogout();

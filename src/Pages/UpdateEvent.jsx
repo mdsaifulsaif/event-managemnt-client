@@ -10,6 +10,7 @@ import { Helmet } from "react-helmet-async";
 const UpdateEvent = () => {
   const { user } = useContext(AuthContext);
   const usermail = user.email;
+
   const data = useLoaderData();
   const navigate = useNavigate();
   const {
@@ -64,7 +65,10 @@ const UpdateEvent = () => {
     };
 
     axios
-      .put(`http://localhost:3000/update-event/${_id}`, eventData)
+      .put(
+        `https://server-site-ruby-eight.vercel.app/update-event/${_id}`,
+        eventData
+      )
       .then((response) => {
         if (response.data.modifiedCount > 0) {
           Swal.fire({

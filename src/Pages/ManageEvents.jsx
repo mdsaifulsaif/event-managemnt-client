@@ -11,12 +11,11 @@ const ManageEvents = () => {
   const [events, setEvents] = useState(data);
 
   const handleUpdate = () => {
-    // console.log("Update clicked:", event._id);
+    // console.log("Update clicked:", event?._id);
     // Add update logic
   };
 
   const handledelete = async (id) => {
-    console.log(id);
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -28,7 +27,7 @@ const ManageEvents = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/delete/${id}`, {
+        fetch(`https://server-site-ruby-eight.vercel.app/delete/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -54,51 +53,51 @@ const ManageEvents = () => {
 
       <div
         className={`w-11/12 mx-auto grid gap-5  ${
-          events.length === 0 ? "grid-cols-1" : "grid-cols-3"
+          events?.length === 0 ? "grid-cols-1" : "grid-cols-3"
         } `}
       >
-        {events.length === 0 ? (
+        {events?.length === 0 ? (
           <div className="  text-center text-gray-700 px-6 py-4 rounded-xl shadow">
             <h3 className="text-xl  font-semibold mb-1">No Events Yet</h3>
             <p>Please create an event to manage it here.</p>
           </div>
         ) : (
-          events.map((event) => (
+          events?.map((event) => (
             <div
-              key={event._id}
+              key={event?._id}
               className=" mt-10 p-6 bg-white shadow-lg rounded-2xl"
             >
               <img
-                src={event.imageUrl || "https://via.placeholder.com/400x200"}
-                alt={event.title}
+                src={event?.imageUrl || "https://via.placeholder.com/400x200"}
+                alt={event?.title}
                 className="w-full h-48 object-cover rounded-xl mb-4"
               />
 
               <div>
                 <div className="space-y-2 text-gray-700">
                   <p>
-                    <strong>Title:</strong> {event.title}
+                    <strong>Title:</strong> {event?.title}
                   </p>
                   <p>
-                    <strong>Description:</strong> {event.description}
+                    <strong>Description:</strong> {event?.description}
                   </p>
                   <p>
-                    <strong>Type:</strong> {event.eventType}
+                    <strong>Type:</strong> {event?.eventType}
                   </p>
                   <p>
-                    <strong>Location:</strong> {event.location}
+                    <strong>Location:</strong> {event?.location}
                   </p>
                   <p>
                     <strong>Date:</strong>{" "}
-                    {new Date(event.date).toLocaleString()}
+                    {new Date(event?.date).toLocaleString()}
                   </p>
                   <p>
-                    <strong>Created By:</strong> {event.createdBy}
+                    <strong>Created By:</strong> {event?.createdBy}
                   </p>
                 </div>
 
                 <div className="flex justify-end gap-4 mt-6">
-                  <Link to={`/update/${event._id}`}>
+                  <Link to={`/update/${event?._id}`}>
                     <button
                       onClick={handleUpdate}
                       className="flex items-center gap-2 px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition"
@@ -109,7 +108,7 @@ const ManageEvents = () => {
                   </Link>
 
                   <button
-                    onClick={() => handledelete(event._id)}
+                    onClick={() => handledelete(event?._id)}
                     className="flex items-center gap-2 px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg transition"
                   >
                     <FaTrash />

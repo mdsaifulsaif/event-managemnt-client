@@ -11,6 +11,8 @@ import UpdateEvent from "./Pages/UpdateEvent";
 import Register from "./Pages/Register";
 import Login from "./Pages/Login";
 import PrivetRoute from "./PrivetRoute/PrivetRoute";
+import LoaddingSpinner from "./Components/LoaddingSpinner";
+import Allevents from "./Pages/Allevents";
 
 export const router = createBrowserRouter([
   {
@@ -34,16 +36,17 @@ export const router = createBrowserRouter([
       {
         path: "upcoming-events",
         loader: () =>
-          fetch(`http://localhost:3000/events`, {
+          fetch(`https://server-site-ruby-eight.vercel.app/events`, {
             credentials: "include",
           }),
+        hydrateFallbackElement: <LoaddingSpinner></LoaddingSpinner>,
         Component: UpcomingEvents,
       },
       {
         path: "event-details/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/event/${params.id}`),
-        // Component: EventDetails,
+          fetch(`https://server-site-ruby-eight.vercel.app/event/${params.id}`),
+        hydrateFallbackElement: <LoaddingSpinner></LoaddingSpinner>,
         element: (
           <PrivetRoute>
             <EventDetails></EventDetails>
@@ -53,10 +56,13 @@ export const router = createBrowserRouter([
       {
         path: "/joined-events/:email",
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/joinded-Events/${params.email}`, {
-            credentials: "include",
-          }),
-
+          fetch(
+            `https://server-site-ruby-eight.vercel.app/joinded-Events/${params.email}`,
+            {
+              credentials: "include",
+            }
+          ),
+        hydrateFallbackElement: <LoaddingSpinner></LoaddingSpinner>,
         element: (
           <PrivetRoute>
             <JoindedEvents></JoindedEvents>
@@ -66,9 +72,13 @@ export const router = createBrowserRouter([
       {
         path: "/manage-events/:userEmail",
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/user-events?email=${params.userEmail}`, {
-            credentials: "include",
-          }),
+          fetch(
+            `https://server-site-ruby-eight.vercel.app/user-events?email=${params.userEmail}`,
+            {
+              credentials: "include",
+            }
+          ),
+        hydrateFallbackElement: <LoaddingSpinner></LoaddingSpinner>,
         element: (
           <PrivetRoute>
             <ManageEvents></ManageEvents>
@@ -78,7 +88,8 @@ export const router = createBrowserRouter([
       {
         path: "/update/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/event/${params.id}`),
+          fetch(`https://server-site-ruby-eight.vercel.app/event/${params.id}`),
+        hydrateFallbackElement: <LoaddingSpinner></LoaddingSpinner>,
         Component: UpdateEvent,
       },
       {

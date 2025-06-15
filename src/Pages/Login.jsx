@@ -51,7 +51,11 @@ function Login() {
     googleLogin()
       .then((res) => {
         const user = res.user;
-
+        if (location.state === null) {
+          navigate("/");
+        } else {
+          navigate(location.state);
+        }
         if (user) {
           Swal.fire({
             title: "Login Successfully!",
@@ -60,12 +64,6 @@ function Login() {
             confirmButtonColor: "#129990",
             draggable: true,
           });
-        }
-
-        if (location.state === null) {
-          navigate("/");
-        } else {
-          navigate(location.state);
         }
       })
       .catch((error) => {
