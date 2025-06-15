@@ -35,11 +35,6 @@ export const router = createBrowserRouter([
       },
       {
         path: "upcoming-events",
-        loader: () =>
-          fetch(`https://server-site-ruby-eight.vercel.app/events`, {
-            credentials: "include",
-          }),
-        hydrateFallbackElement: <LoaddingSpinner></LoaddingSpinner>,
         Component: UpcomingEvents,
       },
       {
