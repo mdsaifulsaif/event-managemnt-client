@@ -5,7 +5,7 @@ function Allevents() {
   const events = useLoaderData();
 
   return (
-    <div className="p-6">
+    <div className="p-6  mt-15 py-10  bg-amber-300">
       <h2 className="text-2xl font-bold mb-6 text-center">All Events</h2>
       {events.length === 0 ? (
         <p className="text-center text-gray-500">No events found.</p>

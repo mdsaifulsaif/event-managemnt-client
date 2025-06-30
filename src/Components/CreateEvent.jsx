@@ -73,7 +73,7 @@ const CreateEvent = () => {
   };
 
   return (
-    <section className="max-w-3xl mx-auto px-4 py-10">
+    <section className="max-w-3xl mt-15 mx-auto px-4 py-10">
       <Helmet>
         <title>Impacthub | Create Event</title>
       </Helmet>

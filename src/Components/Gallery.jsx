@@ -31,7 +31,7 @@ const images = [
 const Gallery = () => {
   return (
     <section className="px-4 py-12 w-11/12 mx-auto">
-      <h2 className="text-3xl font-bold text-center text-[#129990] mb-10">
+      <h2 className="text-3xl md:text-4xl text-center font-bold text-gray-800 mb-8">
         Event Gallery
       </h2>
 

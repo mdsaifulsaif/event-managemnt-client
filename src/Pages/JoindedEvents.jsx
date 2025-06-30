@@ -7,7 +7,7 @@ function JoindedEvents() {
   const joinedEvents = useLoaderData();
 
   return (
-    <section className="px-6 py-10 w-11/12 mx-auto">
+    <section className="px-6  mt-15 py-10  w-11/12 mx-auto">
       <Helmet>
         <title>Impacthub | Joined Events</title>
       </Helmet>

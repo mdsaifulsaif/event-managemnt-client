@@ -5,6 +5,7 @@ import Features from "../Components/Features";
 import Newsletter from "../Components/Newsletter";
 import Gallery from "../Components/Gallery";
 import EventGallery from "../Components/EventGallery";
+import ImpactTracker from "./ImpactTracker";
 
 function Home() {
   return (
@@ -14,6 +15,7 @@ function Home() {
       </Helmet>
       <Banner></Banner>
       <Features></Features>
+      <ImpactTracker></ImpactTracker>
       <Gallery></Gallery>
       <Newsletter></Newsletter>
     </div>

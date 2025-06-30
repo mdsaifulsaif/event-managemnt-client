@@ -13,6 +13,9 @@ import Login from "./Pages/Login";
 import PrivetRoute from "./PrivetRoute/PrivetRoute";
 import LoaddingSpinner from "./Components/LoaddingSpinner";
 import Allevents from "./Pages/Allevents";
+import AboutImpactHub from "./Pages/AboutImpactHub";
+import HowItWorks from "./Pages/HowItWorks";
+import CommunityVoices from "./Pages/CommunityVoices";
 
 export const router = createBrowserRouter([
   {
@@ -36,6 +39,18 @@ export const router = createBrowserRouter([
       {
         path: "upcoming-events",
         Component: UpcomingEvents,
+      },
+      {
+        path: "about",
+        Component: AboutImpactHub,
+      },
+      {
+        path: "howitwork",
+        Component: HowItWorks,
+      },
+      {
+        path: "communityvoices",
+        Component: CommunityVoices,
       },
       {
         path: "event-details/:id",

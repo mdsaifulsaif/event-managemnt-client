@@ -55,7 +55,7 @@ function EventDetails() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-lg mt-10">
+    <div className="max-w-4xl mt-18 py-10  mx-auto p-6 bg-white rounded-lg shadow-lg">
       <Helmet>
         <title>Impacthub | Event Details</title>
       </Helmet>

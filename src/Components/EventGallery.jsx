@@ -26,7 +26,7 @@ const photos = [
 
 const EventGallery = () => {
   return (
-    <section className="py-16 px-6 ">
+    <section className="py-16  px-6 ">
       <div className="max-w-7xl mx-auto text-center">
         <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-8">
           Event Gallery

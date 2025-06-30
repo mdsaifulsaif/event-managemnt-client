@@ -27,7 +27,7 @@ const Banner = () => {
   }, []);
 
   return (
-    <section className=" py-16 px-6">
+    <section className=" py-15 mt-15 px-6">
       <div className="w-11/12 mx-auto grid grid-cols-1 md:grid-cols-2 items-center justify-center  gap-10">
         {/* Left: Text Content */}
         <div className="text-center md:text-left">

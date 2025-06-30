@@ -73,7 +73,7 @@ function Login() {
   };
 
   return (
-    <div className="flex items-center justify-center h-screen dark:text-gray-900">
+    <div className="flex mt-15 items-center justify-center h-screen dark:text-gray-900">
       <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
         <Helmet>
           <title>Impacthub | Login</title>
