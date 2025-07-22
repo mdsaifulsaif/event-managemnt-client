@@ -77,7 +77,7 @@ function UpcomingEvents() {
             events.map((event) => (
               <div
                 key={event._id}
-                className="bg-white shadow rounded-lg border border-gray-100 flex flex-col"
+                className="bg-white dark:bg-gray-800 shadow rounded-lg border border-gray-100 flex flex-col"
               >
                 <img
                   src={event.imageUrl}

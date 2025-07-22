@@ -23,17 +23,23 @@ const HowItWorks = () => {
   ];
 
   return (
-    <section className="px-5 md:px-20 py-10 mt-15 bg-gray-50 rounded-xl">
-      <h2 className="text-2xl font-bold text-[#129990] mb-8">How It Works</h2>
+    <section className="px-5 md:px-20 py-10 mt-15 bg-gray-50 dark:bg-gray-800 rounded-xl">
+      <h2 className="text-2xl font-bold text-[#129990] dark:text-gray-200 mb-8">
+        How It Works
+      </h2>
       <div className="grid md:grid-cols-4 gap-6">
         {steps.map(({ step, title, desc }) => (
           <div
             key={step}
-            className="border border-[#129990] rounded-lg p-4 shadow-sm text-center"
+            className="border dark:bg-gray-800 shadow-xl  border-[#129990] rounded-lg p-4  text-center"
           >
             <div className="text-2xl font-bold text-[#129990] mb-2">{step}</div>
-            <h3 className="text-lg font-semibold text-gray-800">{title}</h3>
-            <p className="text-gray-600 text-sm mt-2">{desc}</p>
+            <h3 className="text-lg font-semibold dark:text-gray-200 text-gray-800">
+              {title}
+            </h3>
+            <p className="text-gray-600 dark:text-gray-200 text-sm mt-2">
+              {desc}
+            </p>
           </div>
         ))}
       </div>

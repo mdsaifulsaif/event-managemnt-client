@@ -31,19 +31,19 @@ const Banner = () => {
       <div className="w-11/12 mx-auto grid grid-cols-1 md:grid-cols-2 items-center justify-center  gap-10">
         {/* Left: Text Content */}
         <div className="text-center md:text-left">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-800 leading-tight mb-4">
+          <h1 className="text-4xl dark:text-white md:text-5xl font-bold text-gray-800 leading-tight mb-4">
             Volunteer events made easier for everyone
           </h1>
-          <p className="text-gray-600 text-lg mb-6">
+          <p className="text-gray-600 dark:text-gray-200 text-lg mb-6">
             Impacthub helps you discover and join local community-driven
             initiatives like clean-ups, plantations, and awareness drives.
           </p>
-          <div className="flex items-center bg-white rounded-full shadow-md max-w-md mx-auto md:mx-0 px-4 py-2 gap-2">
+          <div className="flex items-center bg-white dark:bg-gray-600 rounded-full shadow-md max-w-md mx-auto md:mx-0 px-4 py-2 gap-2">
             <FaSearch className="text-gray-400" />
             <input
               type="text"
               placeholder="Search social events..."
-              className="flex-1 outline-none bg-transparent text-gray-700"
+              className="flex-1 outline-none bg-transparent  text-gray-700"
             />
             <button className="bg-[#129990] text-white px-4 py-1.5 rounded-full hover:bg-[#0e807c] transition">
               Search

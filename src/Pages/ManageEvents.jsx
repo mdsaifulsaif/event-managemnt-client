@@ -65,7 +65,7 @@ const ManageEvents = () => {
           events?.map((event) => (
             <div
               key={event?._id}
-              className=" mt-10 p-6 bg-white shadow-lg rounded-2xl"
+              className=" mt-10 p-6 dark:bg-gray-800 bg-white shadow-lg rounded-2xl"
             >
               <img
                 src={event?.imageUrl || "https://via.placeholder.com/400x200"}

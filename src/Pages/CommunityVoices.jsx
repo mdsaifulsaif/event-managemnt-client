@@ -18,17 +18,19 @@ const CommunityVoices = () => {
   ];
 
   return (
-    <section className="px-5 md:px-20 py-10 mt-15 bg-gray-50 rounded-xl">
-      <h2 className="text-2xl font-bold text-[#129990] mb-8">
+    <section className="px-5 md:px-20 py-10 mt-15 bg-gray-50  dark:bg-gray-800">
+      <h2 className="text-2xl font-bold dark:text-gray-200 text-[#129990] mb-8">
         Community Voices
       </h2>
       <div className="grid md:grid-cols-3 gap-6">
         {voices.map((v, i) => (
           <div
             key={i}
-            className="border border-[#129990] rounded-lg p-6 shadow-sm bg-white"
+            className="border border-[#129990] rounded-lg p-6 shadow-sm bg-white dark:bg-gray-800"
           >
-            <p className="italic text-gray-600">“{v.quote}”</p>
+            <p className="italic dark:text-gray-200 text-gray-600">
+              “{v.quote}”
+            </p>
             <p className="mt-4 font-semibold text-[#129990]">— {v.name}</p>
           </div>
         ))}

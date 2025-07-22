@@ -36,10 +36,11 @@ const Features = () => {
   return (
     <section className="py-20 px-6">
       <div className="w-11/12 mx-auto text-center">
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+        <h2 className="text-3xl md:text-4xl dark:text-gray-200 font-bold text-gray-800 mb-4">
           What You Can Do with ImpactHub
         </h2>
-        <p className="text-gray-600 max-w-2xl mx-auto mb-12">
+
+        <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-12">
           EventMatea empowers local communities to take action by making event
           planning and participation simple, accessible, and effective.
         </p>
@@ -48,13 +49,15 @@ const Features = () => {
           {features.map((feature, index) => (
             <div
               key={index}
-              className="bg-white rounded-2xl p-6 shadow hover:shadow-md transition text-center"
+              className="bg-white dark:bg-gray-700 rounded-2xl p-6 shadow hover:shadow-md transition text-center"
             >
               {feature.icon}
-              <h3 className="text-xl font-semibold mb-2 text-gray-800">
+              <h3 className="text-xl font-semibold mb-2 dark:text-gray-200 text-gray-800">
                 {feature.title}
               </h3>
-              <p className="text-sm text-gray-600">{feature.description}</p>
+              <p className="text-sm dark:text-gray-200 text-gray-600">
+                {feature.description}
+              </p>
             </div>
           ))}
         </div>

@@ -25,28 +25,30 @@ function JoindedEvents() {
           {joinedEvents.map((event) => (
             <div
               key={event._id}
-              className="bg-white shadow rounded-lg border border-gray-100 p-4 flex flex-col md:flex-row items-center gap-4"
+              className="bg-white dark:bg-gray-800 shadow rounded-lg border border-gray-100 p-4 flex flex-col md:flex-row items-center gap-4"
             >
               {/* Left: Info */}
               <div className="w-full md:w-2/3">
                 <h3 className="text-xl font-semibold text-[#129990]">
                   {event.title}
                 </h3>
-                <p className="text-gray-600 flex items-center gap-2 mt-2">
+                <p className="text-gray-600 flex dark:text-gray-200 items-center gap-2 mt-2">
                   <FaMapMarkerAlt className="text-[#129990]" /> {event.location}
                 </p>
-                <p className="text-gray-600 flex items-center gap-2 mt-1">
+                <p className="text-gray-600 dark:text-gray-200 flex items-center gap-2 mt-1">
                   <FaCalendarAlt className="text-[#129990]" />
                   {new Date(event.date).toLocaleDateString()}
                 </p>
-                <p className="text-gray-500 mt-2">
+                <p className="text-gray-500 dark:text-gray-200 mt-2">
                   <span className="font-medium">Type:</span> {event.eventType}
                 </p>
-                <p className="text-gray-500 mt-1 text-sm">
+                <p className="text-gray-500 mt-1 dark:text-gray-200 text-sm">
                   <span className="font-medium">Joined At:</span>{" "}
                   {new Date(event.joinedAt).toLocaleString()}
                 </p>
-                <p className="text-gray-700 mt-2">{event.description}</p>
+                <p className="text-gray-700 dark:text-gray-200 mt-2">
+                  {event.description}
+                </p>
               </div>
 
               {/* Right: Image */}

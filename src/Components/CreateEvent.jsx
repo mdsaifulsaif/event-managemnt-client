@@ -73,7 +73,7 @@ const CreateEvent = () => {
   };
 
   return (
-    <section className="max-w-3xl mt-15 mx-auto px-4 py-10">
+    <section className="max-w-3xl mt-15 mx-auto  px-4 py-10">
       <Helmet>
         <title>Impacthub | Create Event</title>
       </Helmet>
@@ -82,7 +82,7 @@ const CreateEvent = () => {
       </h2>
       <form
         onSubmit={handleSubmit}
-        className="bg-white p-6 rounded-xl shadow space-y-5"
+        className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow space-y-5"
       >
         <input
           type="text"
