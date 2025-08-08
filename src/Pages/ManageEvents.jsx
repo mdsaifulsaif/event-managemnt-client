@@ -52,15 +52,19 @@ const ManageEvents = () => {
       </h2>
 
       <div
-        className={`w-11/12 bg-red-200 mx-auto grid gap-5  ${
+        className={`w-11/12 bg-white dark:bg-gray-800 mx-auto grid gap-5  ${
           events?.length === 0 ? "grid-cols-1" : "grid-cols-3"
         } `}
       >
         {events?.length === 0 ? (
-          <div className=" h-[70vh] text-center bg-amber-100 mb-4 flex items-center justify-center text-gray-700 px-6 py-4 rounded-xl shadow">
+          <div className=" h-[70vh] text-center bg-white dark:bg-gray-700 mb-4 flex items-center justify-center text-gray-700 px-6 py-4 rounded-xl shadow">
             <div>
-              <h3 className="text-xl  font-semibold mb-1">No Events Yet</h3>
-              <p>Please create an event to manage it here.</p>
+              <h3 className="text-xl text-gray-800 dark:text-gray-100 font-semibold mb-1">
+                No Events Yet
+              </h3>
+              <p className="text-gray-800 dark:text-gray-100">
+                Please create an event to manage it here.
+              </p>
             </div>
           </div>
         ) : (
