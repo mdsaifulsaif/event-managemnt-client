@@ -30,7 +30,7 @@ const images = [
 
 const Gallery = () => {
   return (
-    <section className="px-4 py-12 w-11/12 mx-auto">
+    <section className="px-4 py-12 md:w-6xl mx-auto">
       <h2 className="text-3xl md:text-4xl text-center font-bold text-gray-800 mb-8">
         Event Gallery
       </h2>

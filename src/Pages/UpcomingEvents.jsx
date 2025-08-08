@@ -38,13 +38,13 @@ function UpcomingEvents() {
   }, [searchText, eventType]);
 
   return (
-    <section className="px-6 py-10 mt-15 w-11/12 mx-auto">
+    <section className=" py-10 mt-15 md:w-6xl mx-auto">
       <Helmet>
         <title>Upcoming Events</title>
       </Helmet>
 
       {/* Search & Filter Controls */}
-      <div className="flex flex-col md:flex-row justify-between gap-4 mb-6">
+      <div className="flex flex-col md:flex-row  justify-between gap-4 mb-6">
         <input
           type="text"
           placeholder="Search by event name..."
@@ -86,19 +86,21 @@ function UpcomingEvents() {
                 />
 
                 <div className="p-4 flex flex-col flex-grow">
-                  <h3 className="text-xl font-semibold mb-2">{event.title}</h3>
+                  <h3 className="text-xl dark:text-gray-100 text-gray-800 font-semibold mb-2">
+                    {event.title}
+                  </h3>
 
-                  <p className="text-gray-600 flex items-center gap-2 mb-1">
+                  <p className="dark:text-gray-100 text-gray-800 flex items-center gap-2 mb-1">
                     <FaMapMarkerAlt className="text-[#129990]" />{" "}
                     {event.location}
                   </p>
 
-                  <p className="text-gray-600 flex items-center gap-2 mb-1">
+                  <p className="dark:text-gray-100 text-gray-800 flex items-center gap-2 mb-1">
                     <FaCalendarAlt className="text-[#129990]" />{" "}
                     {new Date(event.date).toLocaleDateString()}
                   </p>
 
-                  <p className="text-gray-500 text-sm mb-4">
+                  <p className="dark:text-gray-100 text-gray-800 text-sm mb-4">
                     Type: {event.eventType}
                   </p>
 

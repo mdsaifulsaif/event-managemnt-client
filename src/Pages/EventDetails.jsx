@@ -55,7 +55,7 @@ function EventDetails() {
   };
 
   return (
-    <div className="max-w-4xl mt-18 md:mt-23 md:mb-5  py-10  mx-auto p-6 dark:bg-gray-800 bg-white rounded-lg shadow-lg">
+    <div className="max-w-4xl mt-20 md:mt-23 mb-5  py-10  mx-auto p-6 dark:bg-gray-800 bg-white rounded-lg shadow-lg">
       <Helmet>
         <title>Impacthub | Event Details</title>
       </Helmet>
@@ -64,12 +64,19 @@ function EventDetails() {
         alt={event.title}
         className="w-full h-64 object-cover rounded-lg mb-6"
       />
-      <h2 className="text-3xl font-bold mb-2 text-[#129990]">{event.title}</h2>
-      <p className="text-gray-600 mb-4">{event.description}</p>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-700">
+      <h2 className="text-3xl  font-bold mb-2 text-[#129990] dark:text-gray-100 ">
+        {event.title}
+      </h2>
+      <p className="text-gray-800 mb-4 dark:text-gray-100">
+        {event.description}
+      </p>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 dark:text-gray-100 text-gray-800">
         <p className="flex items-center gap-2">
           <FaMapMarkerAlt className="text-[#129990]" />
-          <strong>Location:</strong> {event.location}
+          <strong className="dark:text-gray-100 text-gray-800">
+            Location:
+          </strong>{" "}
+          {event.location}
         </p>
         <p className="flex items-center gap-2">
           <FaCalendarAlt className="text-[#129990]" />
