@@ -3,7 +3,7 @@ import { Link, NavLink } from "react-router";
 const Footer = () => {
   return (
     <footer className="bg-gray-100 dark:bg-gray-800 dark:text-gray-200 text-gray-700 ">
-      <div className=" w-11/12 mx-auto px-5 py-10 grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className=" w-11/12 mx-auto  py-10 grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* About Section */}
         <div>
           <h2 className="text-xl font-bold " style={{ color: "#129990" }}>

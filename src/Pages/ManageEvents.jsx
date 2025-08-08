@@ -52,7 +52,7 @@ const ManageEvents = () => {
       </h2>
 
       <div
-        className={`w-11/12 mx-auto grid gap-5  ${
+        className={`w-11/12 bg-red-200 mx-auto grid gap-5  ${
           events?.length === 0 ? "grid-cols-1" : "grid-cols-3"
         } `}
       >

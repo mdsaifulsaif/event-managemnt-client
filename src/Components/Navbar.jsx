@@ -34,8 +34,8 @@ const Navbar = ({ toggleTheme, currentTheme }) => {
   };
 
   return (
-    <div className=" fixed w-full z-10 mb-70">
-      <nav className="bg-white dark:bg-gray-800    z-50 shadow-md px-5 md:px-20 py-4 flex justify-between items-center relative">
+    <div className=" fixed w-full  bg-white shadow-md  dark:bg-gray-800 z-10 mb-70">
+      <nav className=" w-11/12 mx-auto  z-50    py-4 flex justify-between items-center relative">
         {/* Logo */}
         <Link
           to="/"
