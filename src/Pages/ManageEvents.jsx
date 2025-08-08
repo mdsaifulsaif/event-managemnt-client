@@ -47,7 +47,7 @@ const ManageEvents = () => {
       <Helmet>
         <title>Impacthub | Manage Events</title>
       </Helmet>
-      <h2 className="text-3xl mt-7  font-bold text-[#129990] mb-6 text-center">
+      <h2 className="text-3xl mt-7  font-bold text-[#129990]  mb-6  text-center">
         Manage Event
       </h2>
 
@@ -57,9 +57,11 @@ const ManageEvents = () => {
         } `}
       >
         {events?.length === 0 ? (
-          <div className="  text-center text-gray-700 px-6 py-4 rounded-xl shadow">
-            <h3 className="text-xl  font-semibold mb-1">No Events Yet</h3>
-            <p>Please create an event to manage it here.</p>
+          <div className=" h-[70vh] text-center bg-amber-100 mb-4 flex items-center justify-center text-gray-700 px-6 py-4 rounded-xl shadow">
+            <div>
+              <h3 className="text-xl  font-semibold mb-1">No Events Yet</h3>
+              <p>Please create an event to manage it here.</p>
+            </div>
           </div>
         ) : (
           events?.map((event) => (
