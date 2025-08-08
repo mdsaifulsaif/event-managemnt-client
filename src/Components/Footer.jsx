@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import { Link, NavLink } from "react-router";
 
 const Footer = () => {
   return (
@@ -9,7 +9,7 @@ const Footer = () => {
           <h2 className="text-xl font-bold " style={{ color: "#129990" }}>
             ImpactHub
           </h2>
-          <p className="text-sm mt-2">
+          <p className="text-sm mt-2 leading-6">
             EventMatea is a community-driven platform empowering individuals to
             create, join, and track social development events. From tree
             plantations to community cleanups, we help you make a local impact.
@@ -21,20 +21,30 @@ const Footer = () => {
           <h3 className="text-md font-semibold mb-3">Quick Links</h3>
           <ul className="space-y-2 text-sm">
             <li>
-              <a href="/upcoming-events" className="hover:text-[#129990]">
-                Upcoming Events
-              </a>
+              <NavLink to="/" className="hover:text-[#129990] ">
+                Home
+              </NavLink>
             </li>
             <li>
-              <a href="/create-event" className="hover:text-[#129990]">
-                Create Event
-              </a>
+              <NavLink to="/about" className="hover:text-[#129990] ">
+                About
+              </NavLink>
             </li>
 
             <li>
-              <a href="/joined-events" className="hover:text-[#129990]">
-                My Events
-              </a>
+              <NavLink to="/upcoming-events" className="hover:text-[#129990] ">
+                Upcoming Events
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/howitwork" className="hover:text-[#129990] ">
+                How It Work
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/communityvoices" className="hover:text-[#129990] ">
+                CommunityVoices
+              </NavLink>
             </li>
           </ul>
         </div>
