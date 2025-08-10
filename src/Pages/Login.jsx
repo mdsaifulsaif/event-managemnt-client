@@ -113,7 +113,7 @@ function Login() {
               Login
             </button>
 
-            <p className="text-sm mt-2">
+            <p className="text-sm mt-2  text-gray-700 dark:text-gray-100">
               Dont’t Have An Account ?{" "}
               <Link className="text-blue-700" to="/register">
                 Register

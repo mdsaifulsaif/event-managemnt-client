@@ -90,7 +90,7 @@ function Register() {
 
   return (
     <div className="">
-      <div className="flex my-5  items-center justify-center h-screen">
+      <div className="flex my-5 mt-20  items-center justify-center h-screen">
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
           <Helmet>
             <title>Impacthub | Register</title>
