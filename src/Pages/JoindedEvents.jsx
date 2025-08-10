@@ -17,9 +17,11 @@ function JoindedEvents() {
       </h2>
 
       {joinedEvents.length === 0 ? (
-        <p className="text-center text-gray-500">
-          You haven't joined any events yet.
-        </p>
+        <div className="h-70 flex items-center justify-center">
+          <p className="text-center text-gray-500">
+            You haven't joined any events yet.
+          </p>
+        </div>
       ) : (
         <div className="grid grid-cols-1 gap-6">
           {joinedEvents.map((event) => (

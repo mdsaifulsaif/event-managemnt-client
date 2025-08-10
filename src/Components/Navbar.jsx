@@ -62,12 +62,12 @@ const Navbar = ({ toggleTheme, currentTheme }) => {
           <NavLink to="/howitwork" className="hover:text-[#129990] font-medium">
             How It Work
           </NavLink>
-          <NavLink
+          {/* <NavLink
             to="/communityvoices"
             className="hover:text-[#129990] font-medium"
           >
             CommunityVoices
-          </NavLink>
+          </NavLink> */}
 
           <button onClick={toggleTheme} className="text-xl">
             {currentTheme === "dark" ? <FaSun /> : <FaMoon />}
@@ -181,6 +181,21 @@ const Navbar = ({ toggleTheme, currentTheme }) => {
                 >
                   Joined Events
                 </NavLink>
+                <NavLink
+                  to={`/about`}
+                  className="block hover:text-[#129990]"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  About
+                </NavLink>
+                <NavLink
+                  to={`/howitwork`}
+                  className="block hover:text-[#129990]"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  How It Work
+                </NavLink>
+
                 <button
                   onClick={() => {
                     handleLogout();

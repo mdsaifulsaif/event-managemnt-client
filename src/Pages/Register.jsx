@@ -99,44 +99,52 @@ function Register() {
             <h1 className="text-3xl font-bold">Register Now!</h1>
             <form onSubmit={handleRegister} className="fieldset">
               {/* name  */}
-              <label className="label">Name</label>
+              <label className="label  text-gray-700 dark:text-gray-200">
+                Name
+              </label>
               <input
                 required
                 name="name"
                 type="text"
-                className="input"
+                className="input text-gray-700 dark:text-gray-100"
                 placeholder="Name"
               />
               {/* name  */}
-              <label className="label">Photo URL</label>
+              <label className="label  text-gray-700 dark:text-gray-200">
+                Photo URL
+              </label>
               <input
                 required
                 name="photourl"
                 type="text"
-                className="input"
+                className="input  text-gray-700 dark:text-gray-100"
                 placeholder="Photo URl"
               />
               {/* email  */}
-              <label className="label">Email</label>
+              <label className="label  text-gray-700 dark:text-gray-200">
+                Email
+              </label>
               <input
                 required
                 name="email"
                 type="email"
-                className="input"
+                className="input text-gray-700 dark:text-gray-100"
                 placeholder="Email"
               />
               {/* password  */}
-              <label className="label">Password</label>
+              <label className="label  text-gray-700 dark:text-gray-200">
+                Password
+              </label>
               <input
                 name="password"
                 type="password"
-                className="input"
+                className="input text-gray-700 dark:text-gray-100"
                 placeholder="Password"
               />
 
               <button
                 type="submit"
-                className="btn text-white bg-[#129990] mt-4"
+                className="btn  text-white bg-[#129990] mt-4"
               >
                 Register
               </button>

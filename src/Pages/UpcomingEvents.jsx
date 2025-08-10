@@ -38,7 +38,7 @@ function UpcomingEvents() {
   }, [searchText, eventType]);
 
   return (
-    <section className=" py-10 mt-15 md:w-6xl mx-auto">
+    <section className=" py-10 mt-15 px-5 md:w-6xl mx-auto">
       <Helmet>
         <title>Upcoming Events</title>
       </Helmet>

@@ -79,26 +79,34 @@ function Login() {
           <title>Impacthub | Login</title>
         </Helmet>
         <div className="card-body">
-          <h1 className="text-3xl font-bold ">Login now!</h1>
+          <h1 className="text-3xl font-bold text-gray-700 dark:text-gray-100">
+            Login now!
+          </h1>
           <form onSubmit={handleLogin} className="fieldset">
-            <label className="label">Email</label>
+            <label className="label text-gray-700 dark:text-gray-100">
+              Email
+            </label>
             <input
               required
               type="email"
               name="email"
-              className="input"
+              className="input text-gray-700 dark:text-gray-100"
               placeholder="Email"
             />
-            <label className="label">Password</label>
+            <label className="label  text-gray-700 dark:text-gray-100">
+              Password
+            </label>
             <input
               required
               type="password"
               name="password"
-              className="input"
+              className="input nput text-gray-700 dark:text-gray-100"
               placeholder="Password"
             />
             <div>
-              <a className="link link-hover">Forgot password?</a>
+              <a className="link link-hover  text-gray-700 dark:text-gray-100 ">
+                Forgot password?
+              </a>
             </div>
 
             <button type="submit" className="btn bg-[#129990] text-white mt-4">

@@ -47,15 +47,18 @@ const ManageEvents = () => {
       <Helmet>
         <title>Impacthub | Manage Events</title>
       </Helmet>
-      <h2 className="text-3xl mt-7  font-bold text-[#129990]  mb-6  text-center">
+      <h2 className="text-3xl mt-25  font-bold text-[#129990]  mb-6  text-center">
         Manage Event
       </h2>
-
       <div
-        className={`md:w-6xl bg-white dark:bg-gray-800 mx-auto grid gap-5  ${
+        className={`md:w-6xl py-5 bg-white dark:bg-gray-800 mx-auto grid gap-5 
+    ${events?.length === 0 ? "grid-cols-1" : "grid-cols-1 md:grid-cols-3"}`}
+      >
+        {/* <div
+        className={`md:w-6xl bg-white dark:bg-gray-800 mx-auto grid grid-cols-3 gap-5  ${
           events?.length === 0 ? "grid-cols-1" : "grid-cols-3"
         } `}
-      >
+      > */}
         {events?.length === 0 ? (
           <div className=" h-[70vh] text-center bg-white dark:bg-gray-700 mb-4 flex items-center justify-center text-gray-700 px-6 py-4 rounded-xl shadow">
             <div>
@@ -80,7 +83,7 @@ const ManageEvents = () => {
               />
 
               <div>
-                <div className="space-y-2 text-gray-700">
+                <div className="space-y-2 text-gray-800 dark:text-gray-100">
                   <p>
                     <strong>Title:</strong> {event?.title}
                   </p>
