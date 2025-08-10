@@ -24,7 +24,7 @@ function JoindedEvents() {
       </h2>
 
       {joinedEvents.length === 0 ? (
-        <div className="h-70 flex items-center justify-center">
+        <div className="h-[70vh] flex items-center justify-center">
           <p className="text-center text-gray-500">
             You haven't joined any events yet.
           </p>
