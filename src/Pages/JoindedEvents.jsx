@@ -1,13 +1,20 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import { FaCalendarAlt, FaMapMarkerAlt } from "react-icons/fa";
-import { useLoaderData } from "react-router"; // changed from "react-router"
+import { useLoaderData, useNavigation } from "react-router";
+import LoaddingSpinner from "../Components/LoaddingSpinner";
 
 function JoindedEvents() {
   const joinedEvents = useLoaderData();
+  const navigation = useNavigation();
+
+  // If loader is still running, show spinner
+  if (navigation.state === "loading") {
+    return <LoaddingSpinner />;
+  }
 
   return (
-    <section className="px-6  mt-15 py-10  md:w-6xl mx-auto">
+    <section className="px-6 mt-15 py-10 md:w-6xl mx-auto">
       <Helmet>
         <title>Impacthub | Joined Events</title>
       </Helmet>
@@ -27,7 +34,7 @@ function JoindedEvents() {
           {joinedEvents.map((event) => (
             <div
               key={event._id}
-              className="bg-white dark:bg-gray-800 shadow-xl rounded-lg   p-4 flex flex-col md:flex-row items-center gap-4"
+              className="bg-white dark:bg-gray-800 shadow-xl rounded-lg p-4 flex flex-col md:flex-row items-center gap-4"
             >
               {/* Left: Info */}
               <div className="w-full md:w-2/3">

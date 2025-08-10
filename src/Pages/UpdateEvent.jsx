@@ -33,7 +33,6 @@ const UpdateEvent = () => {
     date: null,
   });
 
-  //  Load existing event data into formData
   useEffect(() => {
     if (data) {
       setFormData({
@@ -42,7 +41,7 @@ const UpdateEvent = () => {
         eventType,
         imageUrl,
         location,
-        date: new Date(date), // make sure it's a Date object
+        date: new Date(date),
       });
     }
   }, [data]);
@@ -61,7 +60,7 @@ const UpdateEvent = () => {
 
     const eventData = {
       ...formData,
-      createdBy, // keep original creator
+      createdBy,
     };
 
     axios
@@ -86,14 +85,18 @@ const UpdateEvent = () => {
   };
 
   return (
-    <section className="max-w-3xl mx-auto px-4 py-10">
+    <section className="max-w-3xl mt-18 mx-auto px-4 py-10">
       <Helmet>
         <title>Impacthub | Update Event</title>
       </Helmet>
-      <h2 className="text-3xl font-bold mb-6 text-[#129990]">Update Event</h2>
+
+      <h2 className="text-3xl font-bold mb-6 text-gray-700 dark:text-gray-100">
+        Update Event
+      </h2>
+
       <form
         onSubmit={handleSubmit}
-        className="bg-white p-6 rounded-xl shadow space-y-5"
+        className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow space-y-5"
       >
         <input
           type="text"
@@ -101,7 +104,7 @@ const UpdateEvent = () => {
           placeholder="Event Title"
           value={formData.title}
           onChange={handleChange}
-          className="w-full border px-4 py-2 rounded-md"
+          className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-100 px-4 py-2 rounded-md"
           required
         />
 
@@ -110,7 +113,7 @@ const UpdateEvent = () => {
           placeholder="Event Description"
           value={formData.description}
           onChange={handleChange}
-          className="w-full border px-4 py-2 rounded-md"
+          className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-100 px-4 py-2 rounded-md"
           required
         />
 
@@ -118,7 +121,7 @@ const UpdateEvent = () => {
           name="eventType"
           value={formData.eventType}
           onChange={handleChange}
-          className="w-full border px-4 py-2 rounded-md"
+          className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-100 px-4 py-2 rounded-md"
           required
         >
           <option value="">Select Event Type</option>
@@ -134,7 +137,7 @@ const UpdateEvent = () => {
           placeholder="Thumbnail Image URL"
           value={formData.imageUrl}
           onChange={handleChange}
-          className="w-full border px-4 py-2 rounded-md"
+          className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-100 px-4 py-2 rounded-md"
           required
         />
 
@@ -144,19 +147,21 @@ const UpdateEvent = () => {
           placeholder="Location"
           value={formData.location}
           onChange={handleChange}
-          className="w-full border px-4 py-2 rounded-md"
+          className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-100 px-4 py-2 rounded-md"
           required
         />
 
         <div className="w-full">
-          <label className="block text-gray-700 mb-1">Event Date</label>
+          <label className="block text-gray-700 dark:text-gray-100 mb-1">
+            Event Date
+          </label>
           <DatePicker
             selected={formData.date}
             onChange={handleDateChange}
             minDate={new Date()}
             dateFormat="MMMM d, yyyy"
             placeholderText="Select future date"
-            className="w-full border px-4 py-2 rounded-md"
+            className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-100 px-4 py-2 rounded-md"
             required
           />
         </div>

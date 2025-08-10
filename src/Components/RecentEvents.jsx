@@ -33,7 +33,7 @@ export default function RecentEvents() {
   }
 
   return (
-    <section className="py-10 px-4 md:px-8">
+    <section className="pb-10 px-4 md:px-8">
       {/* <h2 className="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-6 text-center">
         Most Recent Events
       </h2> */}

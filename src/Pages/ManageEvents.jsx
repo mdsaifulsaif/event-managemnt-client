@@ -51,7 +51,7 @@ const ManageEvents = () => {
         Manage Event
       </h2>
       <div
-        className={`md:w-6xl py-5 bg-white dark:bg-gray-800 mx-auto grid gap-5 
+        className={`md:w-6xl py-5  bg-white dark:bg-gray-800 mx-auto grid gap-5 
     ${events?.length === 0 ? "grid-cols-1" : "grid-cols-1 md:grid-cols-3"}`}
       >
         {/* <div
