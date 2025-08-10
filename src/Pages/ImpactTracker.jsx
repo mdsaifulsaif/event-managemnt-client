@@ -5,7 +5,7 @@ const ImpactTracker = () => {
   ];
 
   return (
-    <section className="px-5 md:px-20  ">
+    <section className="px-5 md:px-20 md:w-6xl mx-auto ">
       {/* Section Title */}
 
       <h2 className="text-3xl text-center  md:text-4xl font-bold text-gray-800 dark:text-gray-200 mb-8">

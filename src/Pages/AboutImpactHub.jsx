@@ -1,6 +1,6 @@
 const AboutImpactHub = () => {
   return (
-    <section className="px-5 md:px-20 mt-15 py-10 bg-white dark:bg-gray-800 min-h-[50vh] ">
+    <section className="md:w-6xl mx-auto px-5 md:px-20 mt-15 py-10 bg-white dark:bg-gray-800 min-h-[50vh] ">
       <h2 className="text-2xl font-bold dark:text-gray-200 text-[#129990] mb-4">
         Why ImpactHub?
       </h2>
